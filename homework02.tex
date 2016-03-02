@@ -1,0 +1,350 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,amsfonts,latexsym,paralist}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\names}[5]{
+\begin{tabular}{|ll|}
+\hline
+\textbf{Name} & \textbf{Problems}\\
+\hline
+#1 & 1--10\\
+#2 & #3\\
+#4 & #5\\
+\hline
+\end{tabular}}
+
+
+ 
+
+
+
+
+\begin{document}
+\begin{center}
+{\large
+CSCE 222 [505] Discrete Structures for Computing\\[.5ex]
+Fall 2015 -- Philip C. Ritchey\\}
+\end{center}
+
+
+
+\names{Mitesh Patel}{Malcolm Carr}{Helped with 1 2 3 5 10}{9-13-15}{}
+
+\begin{resources} Discrete Mathematics and Its Application by Rosen (Chapter 2). http://math.stackexchange.com/questions/837318/if-a-function-has-a-inverse-that-is-well-defined-is-it-a-bijection. sharelatex.com and piazza.com %http://oeis.org/wiki/List_of_LaTeX_mathematical_symbols.%
+\end{resources}
+
+\bigskip
+
+% set operations (even, odd, integers)
+\begin{problem} (10 points) 
+Supplementary Exercise 4
+\end{problem}
+\begin{solution}:
+\newline
+A) E $\cup$ O = set that contains either even or odd integers = set Z.
+\newline
+B) E $\cap$ O = set containing both E and O = EMPTY set since even and odd are total opposites.
+\newline
+C) Z - E = set of all integers excluding even integers = set O.
+\newline
+D) Z - O = set of all integers excluding odd integers = set E.
+\end{solution}
+
+\newpage
+
+% subset and intersection
+\begin{problem} (10 points) 
+Supplementary Exercise 6
+\end{problem}
+\begin{solution}:
+\newline
+Given : A $\cap$ B = A which means that every element in set A also belongs in set B, and by definition of subset (A $\subseteq$ B)  which means that every element of A is also an element of B.\newline 
+So: the quantification $\forall$x(x$\in$A$\to$x$\in$B) is True.
+\end{solution}
+
+\newpage
+
+% size of intersection and size of union
+\begin{problem} (10 points) 
+Section 2.2, Exercise 46\\
+\end{problem}
+\begin{solution}:
+\newline
+
+Using : $|$ A $\cup$ B $|$ = $|$A$|$ + $|$B$|$ - $|$ A $\cup$ B $|$ (principle of inclusion exclusion)
+\newline
+
+$|$ A $\cup$ B $\cup$ C $|$ = $|$ A $\cup$ (B $\cup$ C) $|$ ------------ (associative law)
+\newline
+ = $|$A$|$ + $|$B $\cup$ C$|$ - $|$ A $\cap$ (B $\cup$ C) $|$ ------ (principle of inclusion exclusion)
+\newline
+ = $|$A$|$ + $|$B$|$ + $|$C$|$ - $|$ B $\cup$ C $|$ - $|$ (A$\cap$B) $\cup$ (A$\cap$C) $|$ ---------(distribution law)
+ \newline
+ = $|$A$|$ + $|$B$|$ + $|$C$|$ - $|$ B $\cup$ C $|$ - $|$ A $\cap$ B $|$ - $|$ A $\cap$ C $|$ + $|$ A $\cap$ B $\cap$ C $|$
+ \newline
+ = $|$ A $\cup$ B $\cup$ C $|$
+
+\end{solution}
+
+\newpage
+
+% functions, size of range, size of domain
+\begin{problem} (10 points) 
+Supplementary Exercise 14
+\end{problem}
+\begin{solution}:
+\newline
+f(x) = x
+\newline
+x $\in$ S and f(x) $\in$ S
+\newline
+so x,y $\in$ S
+\newline
+if x=y then,
+\newline
+f(x)=f(y) therefore f is a one to one function, and
+\newline
+$|$ f(S) $|$ $\leq$ $|$ S $|$ is TRUE for all subsets of A.
+\end{solution}
+
+\newpage
+
+% ceiling and floor (multiplication)
+\begin{problem} (10 points) 
+Supplementary Exercise 22
+\end{problem}
+\begin{solution}:
+\newline
+n $\in$ $\mathbb{Z}$
+\bigskip
+\newline
+n=2y for some integer y
+
+[$\dfrac{n}{2}$] [$\dfrac{n}{2}$] = [$\dfrac{2y}{2}$] [$\dfrac{2y}{2}$]
+\bigskip
+\newline
+= $y^2$
+\bigskip
+\newline
+[$\dfrac{n^2}{4}$] = [$\dfrac{4y^2}{4}$] = $y^2$
+\bigskip
+\newline
+Therefore: 
+[$\dfrac{n}{2}$] [$\dfrac{n}{2}$] = [$\dfrac{n^2}{4}$] = $y^2$
+\end{solution}
+
+\newpage
+
+% bijection
+\begin{problem} (10 points) 
+Section 2.3, Exercise 22
+\end{problem}
+\begin{solution}:
+\newline
+A) y = -3x +4
+\newline
+x = -3y + 4
+\newline
+f$^{-1}$(x) = (x-4) / -3\newline
+So it is a bijection since we can find the inverse. \bigskip
+\newline
+B)Not a bijection because it fails the horizontal line test, and by failing the horizontal line test it means the function is not one to one. We can also not that f(2) = f(-2) to confirm.
+\bigskip
+\newline
+C) Not a bijection from $\mathbb{R}$ to $\mathbb{R}$ because at x = -2 the function can not divide by 0.
+\bigskip
+\newline
+D) y = x$^5$ + 1
+\newline
+f$^{-1}$(x) = $\sqrt[5]{x-1}$
+\newline
+So this is a bijection because we can take the inverse.
+\end{solution}
+
+\newpage
+
+% sequences, determine a rule
+\begin{problem} (10 points) 
+Supplementary Exercise 30
+\end{problem}
+\begin{solution}:
+\newline
+Last three terms add up to be the next term so:
+\newline
+Given:
+\newline
+a$_o$ = 1
+\newline
+a$_1$ = 3
+\newline
+a$_2$ = 4
+\newline
+Therefore the sequence is : a(n) = a$_{n-3}$ + a$_{n-2}$ + a$_{n-1}$ 
+\newline
+Next four terms : 
+\newline
+a$_8$ = a$_5$ + a$_6$ + $a_7$ = 27 + 50 + 92 = 169
+\newline
+a$_9$ = a$_6$ + a$_7$ + $a_8$ = 50 + 92 + 169 = 311
+\newline
+a$_{10}$ = a$_7$ + a$_8$ + $a_9$ = 92 + 169 + 311 = 572
+\newline
+a$_{11}$ = a$_8$ + a$_9$ + $a_{10}$ = 169 + 311 + 572 = 1052
+\newline
+
+\end{solution}
+
+\newpage
+
+% recurrence relations
+\begin{problem} (10 points) 
+Section 2.4, Exercise 22
+\end{problem}
+\begin{solution}:
+\newline
+A) a$_n$ = a$_{n-1}$ + 1000 + 0.05a$_{n-1}$
+\newline
+= 1.05a$_{n-1}$ + 1000
+\newline
+a$_o$ = 50000
+\bigskip
+\newline
+B) a$_8$ = 1.05a$_7$ + 1000
+\newline
+a$_o$ = 50000
+\newline
+a$_1$ = 1.05(50000) + 1000 = 53500
+\newline
+a$_2$ = 1.05(53500) + 1000 = 57175
+\newline
+a$_3$ = 1.05(57175) + 1000 = 61033.8
+\newline
+a$_4$ = 1.05(61033.8) + 1000 = 65085.5
+\newline
+a$_5$ = 1.05(65085.5) + 1000 = 69339.8
+\newline
+a$_6$ = 1.05(69339.8) + 1000 = 73806.8
+\newline
+a$_7$ = 1.05(73806.8) + 1000 = 78497.1
+\newline
+a$_8$ = 1.05(78497.1) + 1000 = 83422
+\bigskip
+\newline
+C) a$_n$ = 1.05$^n$ a$_o$ + $\Sigma$$_{i=0}$$^{n-1}$ 1.05$^i$ 1000
+\newline
+= 1.05$^n$ 50000 + 1000 $\Sigma$$_{i=0}$$^{n-1}$ 1.05$^i$ 
+= 1.05$^n$ 50000 + 1000 (20 1.05$^n$ - 20)
+\newline
+= 70000 (1.05$^n$) - 20000
+\end{solution}
+
+\newpage
+
+% telescoping, derive summation formula
+\begin{problem} (10 points) 
+Section 2.4, Exercise 38
+\end{problem}
+\begin{solution}:
+\newline
+a$_k$ = $k^3$ 
+\newline
+telescoping: a$_k$ - $a_{k-1}$ = $k^3$-$(k-1)^3$
+\newline
+expanding$(k-1)^3$ we then get: 
+\newline
+= $k^3$ - ($k^3$-$1^3$-$3k^2$+3k)
+\newline
+= 1 + 3$k^2$ - 3k
+\newline
+$k^2$ = (3k-1) / 3
+\newline
+$k^2$ = ( $k^3$ - $(k-1)^3$ + 3k - 1 ) / 3
+\newline
+$\Sigma_{k=1}^n k^2$ = (1/3) $\Sigma_{k=1}^n$ ($k^3 - (k-1)^3 + 3k - 1$)
+\newline
+= (1/3) $\Sigma_{k=1}^n$ ($k^3 - (k-1)^3$) + 3 $\Sigma_{k=1}^n$ k - $\Sigma_{k=1}^n$ 1
+\newline
+by formula: 
+\newline
+$\Sigma_{k=1}^n$ k = n(n+1) / 2
+\newline
+$\Sigma_{k=1}^n$ 1 = n 
+\newline
+by telescoping: 
+$\Sigma_{k=1}^n$ ($k^3 - (k-1)^3$) = $n^3 + 0$
+\newline
+by substituting:
+$\Sigma_{k=1}^n$ $k^2$ = (1/3)[$n^3$ - 0 + 3 (n(n+1) / 2) - n]
+\newline
+= (1/3)[$n^3$ + ( (3$n^2$ + n) / 2 )]
+\newline
+= n (n+1)(2n+1)  / 6 
+\end{solution}
+
+\newpage
+
+% identity matrix
+\begin{problem} (10 points) 
+Supplementary Exercise 38
+\end{problem}
+\begin{solution}:
+\newline
+\textbf{A}=c\textbf{I}
+\newline
+We are trying to show that \textbf{AB}=\textbf{BA}.
+\newline
+Therefore, lets give values to c and the matrix I, and B. 
+\newline
+c = 2
+\newline
+\textbf{I} = $\begin{bmatrix}
+    1 & 2 \\
+    3 & 4 \\
+\end{bmatrix}$
+\newline
+\textbf{B} = $\begin{bmatrix}
+    4 & 3 \\
+    2 & 1 \\
+\end{bmatrix}$
+\newline
+So: \textbf{A} = 2  $\begin{bmatrix}
+    1 & 2 \\
+    3 & 4 \\
+\end{bmatrix}$ = $\begin{bmatrix}
+   2 & 4 \\
+    6 & 8 \\
+\end{bmatrix}$
+\newline
+AB = $\begin{bmatrix}
+    2 & 4 \\
+    6 & 8 \\
+\end{bmatrix}$ $\begin{bmatrix}
+    4 & 3 \\
+    2 & 1 \\
+\end{bmatrix}$ = $\begin{bmatrix}
+    8 & 12 \\
+    12 & 8 \\
+\end{bmatrix}$
+\newline
+BA = $\begin{bmatrix}
+    4 & 3 \\
+    2 & 1 \\
+\end{bmatrix}$ $\begin{bmatrix}
+    2 & 4 \\
+    6 & 8 \\
+\end{bmatrix}$ = $\begin{bmatrix}
+    8 & 12 \\
+    12 & 8 \\
+\end{bmatrix}$
+\newline
+Therefore we can conclude that \textbf{AB} = \textbf{BA}
+
+\end{solution}
+
+
+
+\end{document}

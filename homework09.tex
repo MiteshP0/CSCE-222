@@ -1,0 +1,194 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,amsfonts,latexsym,paralist}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\graphicspath{ {images/}} 
+
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\names}[3]{
+\begin{center}
+\begin{tabular}{|l|}
+\hline
+\textbf{Names of Group Members}\\
+\hline
+#1 \\
+#2 \\
+#3 \\
+\hline
+\end{tabular}
+\end{center}
+}
+\newcommand{\honor}{\noindent \textbf{Aggie Honor Statement: }On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. 
+}
+
+ 
+\newcommand{\checklist}{\noindent\textbf{Checklist:}
+\begin{compactenum}
+\item Did you type your full name and that of all collaborators? 
+\item Did you abide by the Aggie Honor Code?
+\item Did you solve all problems and start a new page for each? 
+\item Did you submit your  PDF file?
+\end{compactenum}
+}
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[1]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of \LaTeX\ and PDF files of this homework is due on
+    \textbf{#1} on gradescope (\texttt{http://gradescope.com}). 
+    \end{quote}}
+
+
+\begin{document}
+\begin{center}
+{\large
+CSCE 222 [505] Discrete Structures for Computing\\[.5ex]
+Fall 2015 -- Philip C. Ritchey\\}
+\end{center}
+
+\problemset{9}
+
+\duedate{18 November 2015 (Wednesday) before 11:30 a.m.}
+
+\names{Mitesh Patel}
+{UIN: 124002210}
+{11-16-15}
+
+\begin{resources} Discrete mathematics and its application chapter 10 and 11 \\
+Lecture slides \\
+https://en.wikipedia.org/wiki/K-ary\_tree\\
+\end{resources}
+
+\bigskip
+
+% 
+\begin{problem} (10 points) Section 10.1, Exercise 24.
+\end{problem}
+\begin{solution} :
+\\
+A) To model electronic mail messages we can use graphs with directed edges, with multiple edges, and loops. Multiple edges and directed edges because we want to have emails being sent back and forth, thats just how it works. Loops because we can indeed send emails to our selves.
+\\
+
+B) A graph that models the electronic mail send in a network would be described as a directed multigraph. You can send mail to yourself which would be a loop, there would be directed edges since we can send mail back and forth, there would be multiple edges since we can send as many emails to one person as we would like, and they can do the same. Vertices would be the email addresses.
+
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (15 points) Section 10.2, Exercise 40
+\end{problem}
+\begin{solution} :
+\\
+$\Sigma_{v=v}$ deg(v) = 2m
+\\
+= 4 + 3 + 3 + 2 + 2 = 2m
+\\
+14 = 2m
+\\
+m = 7 vertices
+\\
+
+\includegraphics [scale = 0.90] {p2} 
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (15 points) Section 10.2, Exercise 64
+\end{problem}
+\begin{solution} :
+\\
+G = (V,E)
+\\
+V = $V_1 \cup V_2$
+\\
+if $|$V$|$ is even then $|$V$_1$$|$ = $|$V$_2$$|$ \\
+if $|$V$|$ is odd then $|$V$_1$$|$ - $|$V$_2$$|$ = 1 \\
+
+When  $|$V$|$ is even \\
+ $|$V$_1$$|$ = $|$V$_2$$|$ = v/2\\
+ Max edges = (v/2)$^2$ \\
+ therefore e$\leq$ v$^2$ / 4 \\
+ 
+ When $|$V$|$ is odd \\
+ $|$V$_1$$|$ = $\frac{v+1}{2}$ and  $|$V$_2$$|$ = $\frac{v-1}{2}$ \\
+ so ($\frac{v+1}{2}$)($\frac{v-1}{2}$) \\
+ e $\leq$ $\frac{v^2 - 1}{4}$ \\
+ e $\leq$ $v^2$/4 so proved...
+ 
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (15 points) Section 10.8, Exercise 18
+\end{problem}
+\begin{solution} :
+\\
+\includegraphics [scale = 0.90] {p4} 
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (15 points) Section 11.1, Exercise 22
+\end{problem}
+\begin{solution} :
+\\
+5 - ary tree so:
+\\
+m=5\\
+i = 10,000\\
+
+n = mi + 1 \\
+n = i + L \\
+
+i = 10,000 -1 = 9999 internal vertices \\
+n = 5(9999) + 1 \\
+n = 49996 \\
+
+n - i = L \\
+49,996 - 9,999 = 39,997 people who did not send out \\
+n - 1 = 49,996 - 1 = 49,995 received the letter
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (15 points)  Section 11.2, Exercise 8
+\end{problem}
+\begin{solution} :
+\\
+
+\includegraphics [scale = 0.90] {p6} 
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (15 points) Section 11.3, Exercise 16
+\end{problem}
+\begin{solution} :
+\\
+
+\includegraphics [scale = 1.00] {p7} 
+\end{solution}
+
+\newpage
+
+
+\goodbreak
+\honor
+
+\bigskip
+\checklist
+\end{document}

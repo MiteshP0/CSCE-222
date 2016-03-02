@@ -1,0 +1,281 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,amsfonts,latexsym,paralist}
+\usepackage[margin=1in]{geometry}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\names}[3]{
+\begin{center}
+\begin{tabular}{|l|}
+\hline
+\textbf{Names of Group Members}\\
+\hline
+#1 \\
+#2 \\
+#3 \\
+\hline
+\end{tabular}
+\end{center}
+}
+\newcommand{\honor}{\noindent \textbf{Aggie Honor Statement: }On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. 
+}
+
+ 
+\newcommand{\checklist}{\noindent\textbf{Checklist:}
+\begin{compactenum}
+\item Did you type your full name and that of all collaborators? 
+\item Did you abide by the Aggie Honor Code?
+\item Did you solve all problems and start a new page for each? 
+\item Did you submit your  PDF file?
+\end{compactenum}
+}
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[1]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of \LaTeX\ and PDF files of this homework is due on
+    \textbf{#1} on gradescope (\texttt{http://gradescope.com}). 
+    \end{quote}}
+
+
+\begin{document}
+\begin{center}
+{\large
+CSCE 222 [505] Discrete Structures for Computing\\[.5ex]
+Fall 2015 -- Philip C. Ritchey\\}
+\end{center}
+
+\problemset{1}
+
+\duedate{11 November 2015 (Wednesday) before 11:30 a.m.}
+
+\names{Mitesh Patel}
+{UIN: 124002210}
+{11-8-15}
+
+\begin{resources} 
+http://www.themathpage.com/aprecalc/mathematical-induction.htm \\
+https://en.wikipedia.org/wiki/Equivalence\_relation\\
+http://mathworld.wolfram.com/EquivalenceRelation.html \\
+https://en.wikipedia.org/wiki/Equivalence\_class\\
+http://mathworld.wolfram.com/EquivalenceClass.html\\
+https://people.cs.pitt.edu/~milos/courses/cs441/lectures/Class16.pdf
+\end{resources}
+
+\bigskip
+
+% Logic
+\begin{problem} (10 points) \\
+You have an 8-gallon bucket of water an empty 5-gallon bucket, and an empty 3-gallon bucket,  Prove or disprove that you can measure 4 gallons of water by successively pouring some or all of the water from one bucket into another bucket.
+\end{problem}
+\begin{solution} : \\
+First, we can pour the 8 gallon bucket into the 5 gallon bucket so we will be left with 3 gallons of water in the 8 gallon bucket, a empty 3 gallon bucket, and a filled 5 gallon bucket. \\
+Now we can pour the filled 5 gallon bucket into the empty 3 gallon bucket, giving us a filled 3 gallon bucket, and a 5 gallon bucket with 2 gallons of water. \\
+Next lets pour the 3 gallon bucket into the 8 gallon bucket giving us 6 gallons of water in the 8 gallon bucket, a empty 3 gallon bucket, and a 5 gallon bucket with 2 gallons of water. \\
+Now lets pour the 5 gallon bucket into the 3 gallon bucket giving us 2 gallons of water in the 3 gallon bucket, and a empty 5 gallon bucket. \\
+Next pour the water in the 8 gallon bucket into the empty 5 gallon bucket and we get 1 gallon of water in the 8 gallon bucket, 5 gallons of water in the 5 gallon bucket, and 2 gallons of water in the 3 gallon bucket. \\
+Finally, fill the 3 gallon bucket up with the 5 gallon bucket and we are left with 4 gallons of water in the 5 gallon bucket. Hence proved logically.
+
+\end{solution}
+
+\newpage
+
+% Sequences
+\begin{problem} (15 points)\\
+Three numbers are in arithmetic progression.\\
+Three other numbers are in geometric progression.\\
+The corresponding terms of the two progressions sum to 85, 76, 84 respectively.\\
+The sum of all three terms of the arithmetic progression is 126.\\
+Find the terms of both progressions.
+\end{problem}
+\begin{solution} : \\
+Form of Arithmetic progression: a, a+b, a+2b \\
+Form of Geometric progression: c,cr,c$r^2$ \\
+
+We know that :
+\\
+a+c=85 \\
+a+b+cr=76 \\
+a+2b+c$r^2$=84 \\
+
+Solving system of equations:\\ 
+a+0b+c=85 \\ 
+- (a+b+cr) = 76 \\
+----------------\\
+-b+c(1-r) = 9\\
+
+a+0b+cr=76 \\ 
+- (a+2b+c$r^2$) = 84 \\
+----------------\\
+-b+cr(1-r) = -8\\
+
+-b+c(1-r) = 9 \\ 
+-(-b+cr(1-r)) = -8 \\
+----------------\\
+c(1-r) - cr(1-r) = 17 \\ 
+= c($r^2$ - 2r + 1) = 17\\
+= c$(r-1)^2$ = 17 \\
+take r-1 = 1 \\
+c = 17, and a = 68 by plugging in a+c=85 and solving for a\\
+set r = 2: so therefore our answer will be : \\
+Arithmetic: 68,42,16\\
+Geometric: 17,34,68
+\end{solution}
+
+\newpage
+
+% Big-O
+\begin{problem} (15 points)\\
+Show that $$\sum_{i=1}^n i^4 \log^2 i = \Theta(n^5 \log^2 n)$$
+\end{problem}
+\begin{solution} :
+\\
+Lets split and look at upper and lower bounds:
+\\
+
+$\theta$($n^4$)$\leq$ $i^4$ $\leq$ $\theta$($n^5$)
+\\
+
+$\theta$(log$^2$n)$\leq$ log$^2$i $\leq$ $\theta$(log$^2$n)
+\\
+Multiplying vertically we successfully shown:
+\\
+
+$\theta$($n^4$log$^2$n)$\leq$ i$^4$log$^2$i $\leq$ $\theta$(n$^5$log$^2$n)
+\end{solution}
+
+\newpage
+
+% Induction
+\begin{problem} (15 points) \\
+A guest at a party is a celebrity if this person is known by every other guest, but knows none of them. There is at most one celebrity at a party, for if there were two, they would know each other. A particular party may have no celebrity. Your assignment is to find the celebrity, if one exists, at a party, by asking only one type of question -- asking a guest whether they know a second guest. Everyone must answer your questions truthfully. That is, if Alice and Bob are two people at the party, you can ask Alice whether she knows Bob; she must answer correctly. Use mathematical induction to show that if there are $n$ people at the party, then you can find the celebrity, if there is one, with $3(n-1)$ questions.\\
+\textit{Hint: First ask a question to eliminate one person as a celebrity. Then use the inductive hypothesis to identify a potential celebrity. Finally, ask two more questions to determine whether that person is actually a celebrity.}
+\end{problem}
+\begin{solution} : \\
+
+let s(n) be number of questions needed \\
+p(n) is statement that s(n) $\leq$ 3(n-1) \\
+
+Basis: n=1 the result is true\\
+n=2 - p(2) if 2 people then we need only 2 questions to check if they are celebrity\\
+s(2) = 2\\
+$\leq$ 3(2-1) = 3\\
+so proved.\\
+
+Inductive : p(k) $\implies $ p(k+1) k $>$ 1
+\\
+Assume: p(k) if k people at party we find celebrity with 3(k-1) questions \\
+show: p(k+1) - consider 2 people a and b, if a does not know b then b is not a celebrity, and if does b not know a then a is not celebrity. So we leave one person out. \\
+Using IH from the k people left, we can find celebrity or none in atleast 3(k-1) questions. If none then result is true. \\
+
+otherwise if c is celebrity then need 2 more questions to make sure c is actually a celebrity. Ask person left out if they know c then c is a celebrity, or if c knows the person then c is not a celebrity. \\
+So max questions asked is \\
+1+3(k-1) + 2 = 3k - 3 + 3 = 3k \\
+if there is a celebrity we can find one in 3(n-1) questions for n $\geq$ 2. \\
+We need only 3(n-1)-1 = 3n-4 questions so proved by PMI.
+\end{solution}
+
+\newpage
+
+% Counting
+\begin{problem} (15 points)\\
+How many ways are there to travel in $xyzw$ space from the origin (0,0,0,0) to the point (8,6,7,5) by taking steps one unit in the positive $x$, positive $y$, positive $z$, or positive $w$ direction?
+\end{problem}
+\begin{solution} : \\
+
+8+6+7+5 = 26 so 26 ways = 26!
+\\
+steps taken unit by unit in x y z and w direction so respectively 8! 6! 7! 5!.
+\\
+Therefore our answer is:
+\\
+Using c(n,r) formula:
+\\
+$\frac{26!}{8! 6! 7! 5!}$
+\end{solution}
+
+\newpage
+
+% Divide and Conquer
+\begin{problem} (15 points)\\
+\begin{enumerate}
+\item[(a)] Set up a divide-and-conquer recurrence relation for the number of modular multiplications required to compute $a^n \pmod{m}$, where $a$, $m$, and $n$ are positive integers, using the recursive algorithm from Example 4 in Section 5.4.
+\item[(b)] Use the recurrence relation you found in part (a) to construct a big-O estimate for the number of modular multiplications used to compute $a^n \pmod{m}$ using the recursive algorithm.
+\end{enumerate}
+\end{problem}
+\begin{solution} :
+\\
+
+A)\\
+The recurrence relation is:
+\\
+T(n) = T(n/2) + 1 + 1 \\
+T(n) = T(n/2) + 2 \\ 
+T(n) = T(n/2) + O(1) \\
+\\
+This is because we are dividing into 1 subproblem each subproblem receiving 1/2 of the input. The time it takes to from these subproblems and combine their solution is O(1). O(1) because 1 + 1 indicates the exponent in the algorithm (We are multiplying).
+\\
+
+B)\\
+We can construct big O by using master theorem:
+\\
+a = 1\\
+b = 2 \\
+d = 0 \\
+b$^d$ = 1 \\
+
+a = $b^d$  1=1 so: O(n$^d$log$_b$n) = O(n$^0$log$_2$n) = O(logn)
+\end{solution}
+
+\newpage
+
+% Relations
+\begin{problem} (15 points)\\
+Let $R =\{(a,b) \in \mathbb{Z}^2 \mid |a| = |b|\}$. \\
+Show that $R$ is an equivalence relation and specify the equivalence classes of $R$.
+\end{problem}
+\begin{solution} : \\
+
+Reflexive: $\forall$$_a$ aRa \\
+$|a|$ = $|a|$ so yes it is reflexive.\\
+
+Symmetric: $\forall$$_{ab}$ \\
+aRb $\implies$ bRa \\
+$|a|$=$|b|$ $\implies$ $|b|$=$|a|$ so yes it is symmetric\\
+
+Transitive:  $\forall$$_{abc}$ \\
+(aRb $\wedge$ bRc) $\implies$ (aRc) \\
+($|a|$=$|b|$ $\wedge$ $|b|$=$|c|$ ) $\implies$ ($|a|$=$|c|$) so yes it is transitive
+\\
+
+Therefore, since it is reflexive, symmetric, and transitive it is a equivalence relation.
+\\
+
+Specify equivalence classes:
+\\
+.[a] = \{b $|$ $|a|$ = $|b|$\}
+\\
+By example: lets consider set S = \{1,2,3,4,5\} = \{(1,1),(2,2),(3,3), (4,4), (5,5), (1,2), (2,1), (2,3), (3,2), (1,3), (3,1)\} \\
+
+.[1] = \{1,2,3\} \\
+.[2] = \{2,1,3\} \\
+.[3] = \{3,2,1\} \\
+.[4] = \{4\} \\
+.[5] = \{5\} \\
+\end{solution}
+
+\newpage
+
+
+\goodbreak
+\honor
+
+\bigskip
+\checklist
+\end{document}

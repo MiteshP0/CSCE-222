@@ -1,0 +1,381 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,latexsym,paralist}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[margin=1in]{geometry}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\names}[5]{
+\begin{center}
+\begin{tabular}{|ll|}
+\hline
+\textbf{Name}  & \textbf{Problems}\\
+\hline
+#1 & 1--10\\
+#2 & #3\\
+#4 & #5\\
+\hline
+\end{tabular}
+\end{center}
+}
+\newcommand{\honor}{\noindent \textbf{Aggie Honor Statement: }On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. 
+}
+
+ 
+\newcommand{\checklist}{\noindent\textbf{Checklist:}
+\begin{compactenum}
+\item Did you type your full name and UIN and those of any collaborators? 
+\item Did you abide by the Aggie Honor Code?
+\item Did you solve all problems and start a new page for each? 
+\item Did you submit
+\begin{compactenum}
+\item your \LaTeX\ source file?
+\item your  PDF file?
+\end{compactenum}
+\end{compactenum}
+}
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[1]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of \LaTeX\ and PDF files of this homework is due on
+    \textbf{#1} on eCampus (\texttt{http://ecampus.tamu.edu}). 
+    \end{quote}}
+
+
+\begin{document}
+\begin{center}
+{\large
+CSCE 222 [505] Discrete Structures for Computing\\[.5ex]
+Fall 2015 -- Philip C. Ritchey\\}
+\end{center}
+
+\problemset{6}
+
+\duedate{21 October 2015 (Wednesday) before 11:30 a.m.}
+
+\names{Mitesh Patel}
+{10-20-15}{}
+{UIN: 124002210}{}
+
+\begin{resources} www.piazza.com \\
+https://en.wikipedia.org/wiki/Knapsack\_problem\\
+http://www.cplusplus.com/forum/beginner/69889/ \\
+https://users.cs.duke.edu/~ola/ap/recurrence.html \\
+https://proofwiki.org/wiki/Inclusion-Exclusion\_Principle
+
+
+\end{resources}
+
+\bigskip
+
+% ternary strings with consecutive 0s or 1s
+\begin{problem} (15 points) Section 8.1, Exercise 16
+\end{problem}
+\begin{solution} :
+\\
+A) We know that 0,1,2 can be in a ternary string.
+\\
+Correct way: We can append these to a string with length n-1. Therefore we would get $3a_{n-1}$
+\\
+Incorrect strings of length n-2 can be: $3^{n-2} - a_{n-2}$
+\\
+We can add 00 or 11 to this string to make it a valid string: so: $2(3^{n-2}-a_{n-2})$
+\\
+Therefore, $a_n = 3a_{n-1}+2(3^{n-2}) - 2a_{n-2}$
+\\
+
+B) initial conditions:
+\\
+$a_o = 0$
+\\
+$a_1 = 0$
+\\
+
+C) $a_2 = 3a_1+2(3^0) - 2a_o = 3(0)+2(1)-2(0) = 2$
+\\
+$a_3 = 3a_2+2(3^1) - 2a_1 = 3(2)+2(3)-2(0) = 12$
+\\
+$a_4 = 3a_3+2(3^2) - 2a_2 = 3(12)+2(9)-2(2) = 50$
+\\
+$a_5 = 3a_4+2(3^3) - 2a_3 = 3(50)+2(27)-2(12) = 180$
+\\
+$a_6 = 3a_5+2(3^4) - 2a_4 = 3(180)+2(81)-2(50) = 602$
+
+\end{solution}
+
+\newpage
+
+% dynamic programming
+\begin{problem} (15 points) Section 8, Supplementary Exercise 14
+\end{problem}
+\begin{solution} :
+\\
+A) Since $w_j > w$
+\\
+Weight of item j is greater than w. Using M(j,w) it means we cant have $w_j > w$
+\\
+So: M(j,w) = M(j-1,w) - maximum weight in j items that don't exceed w
+\\
+
+B) Consider $w_j \leq w$
+\\
+Using item j:
+\\
+the max weight that is subset of first j-1 items is M(j-1,w-$w_j$)
+\\
+therefore, M(j,w) = max(M(j-1,w),$w_j$ + M(j-1,w-$w_j$))
+\\
+
+C)
+\begin{algorithm}
+\caption{dynamic programming}
+\label{}
+\begin{algorithmic}[1]
+\Procedure{maxweight}{$w_1 .... w_n 0 \leq w \leq W$}
+    \For { w := 0 to W }
+    \State M(0,W) = 0
+    \EndFor
+    \For {j := 1 to n}
+    \For{w:=0 to W}
+         \If {$W_j \leq W$ } 
+        M(j,w) = max(M(j-1,w),$w_j$ + M(j-1,w-$w_j$))
+        \Else \State Return $large$
+        \EndIf
+        \EndFor
+        \EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+
+
+D) We can use another function to store the values and set a temp variable to hold fixed weight limit. Then we can subtract this temp weight by item j.
+
+\end{solution}
+
+\newpage
+
+% goats on an island
+\begin{problem} (15 points) Section 8.2, Exercise 46
+\end{problem}
+\begin{solution} :
+\\
+
+A) $a_o$ = 2
+\\
+$a_n$ = $2a_{n-1} + 100$
+\\
+
+B) $r^n = 2r^{n-1}$
+\\
+$r^n / r^n r^{-1}  = 2$
+\\
+r = 2
+\\
+$a_n^{(h)}$ = $\alpha$$r^n = \alpha2^n$
+\\
+$a_n$ = $\alpha2^n - 100$
+\\
+$a_o$ = 2 = $\alpha2^0 - 100$
+\\
+$\alpha = 102$
+\\
+$a_n = 102(2^n)-100$
+\\
+
+C) $a_n = 2a_{n-1}-n$
+\\
+
+D) $a_n = 2a_{n-1}-n$
+\\
+$a_n = a_n^{(h)} + a_n^{(p)}$
+\\
+first lets solve its associated linear homogeneous 
+\\
+$a_n = 2a_{n-1}$
+\\
+r = 2
+\\
+ $a_n^{(h)}$ = $\alpha2^n$
+ \\
+ F(n) = n
+ \\
+ suppose p(n) = cn + d is such a solution
+ \\
+ cn + d = 2(C(n-1)+d) - n
+ \\
+ = 2(cn-c+d)-n
+ \\
+ = 2cn-2c+2d-n
+ \\
+ cn+n-2cn = -2c+2d-d
+ \\
+ n(c+1-2c) = -2c + d
+ \\
+ (-c+1)n + (2c+d) = 0
+ \\
+ c = 1 , and d = -2
+ \\
+ so plugging in:
+ \\
+ $a_n^{(p)} = n-2_n = n - 2 + \alpha2^n$
+ \\
+$ a_o = 2 = -2 + \alpha$
+\\
+$\alpha $= 4
+\\
+Therefore, $a_n = n - 2 + 4(2^n)$
+  
+
+\end{solution}
+
+\newpage
+
+% Develop and solve recurrence relation (requires solving 14)
+\begin{problem} (15 points) Section 8.3, Exercise 16
+\end{problem}
+\begin{solution} :
+\\
+from 14: number of rounds from two sets is f(n/2), requires one more round to get winner.
+\\
+therefore recurrence relation would be f(n) = f(n/2) + 1, f(1) = 0 where n = $2^k$
+\\
+
+Now 16:
+\\
+$a_{(2^{k})}$ = $a_{(2^{k-1})}$ + 1\\
+= $a_{(2^{k-1})}$ + 1\\
+= $a_{(2^{k-2})}$ + 1 + 1\\
+= $a_{(2^{k-3})}$ + 1 + 1 + 1\\
+.
+\\
+.\\
+.\\
+= $a_{(2^{k-i})}$ + i
+\\
+$i_{max}$ = k
+\\
+so : $a_{(2^{k-k})}$ + k
+\\
+= $a_1$ + k
+\\
+from 14 : = 0 + k = k = $a_{2^n}$
+ 
+\end{solution}
+
+\newpage
+
+% generating functions and counting
+\begin{problem} (15 points) Section 8.4, Exercise 14
+\end{problem}
+\begin{solution} :
+\\
+
+$0\leq x \leq 3$\\
+$x_1 + x_2 + x_3 + x_4 + x_5 = 12 $\\
+$(1+x+x^2+x^3)^5$ = $(1-x^4)^5$ / $(1-x)^5$\\
+by expanding first couple of terms = $\frac{1 - 5x^4 + 10x^8 - 10x^{12} +...}{(1-x)^5}$\\
+using: $\frac{1}{1-(ax)^n}$ = $\Sigma_{k=0}^{\infty}$ C(n+k-1,k)$a^k x^k$\\
+n = 12, k = 4 \\ 
+n = 8, k = 4 \\ 
+n = 4, k = 4 \\ 
+n = 0, k = 4 \\ 
+
+$n+k-1 \choose k$\\
+
+$16 \choose 4$ - 5$12 \choose 4$ + 10$8 \choose 4$ - 10$1 \choose 1$ \\
+
+= 1820 - 2475 + 700 -10 = 35
+ 
+\end{solution}
+
+\newpage
+
+% inclusion exclusion
+\begin{problem} (15 points) Section 8.5, Exercise 14
+\end{problem}
+\begin{solution} : 
+\\
+26! permutations total \\ 
+$|$A$|$ := set that contains "fish"\\
+$|$B$|$ := set that contains "rat"\\
+$|$C$|$ := set that contains "bird"\\ 
+\\
+so: \\
+$|$A$|$ = 26 - 4 + 1 = 23! // we add one because the string is one block
+\\
+$|$B$|$ = 26 - 3 +1 = 24!
+\\
+$|$C$|$ = 26 - 4 + 1 = 23! \\
+
+$| A \cup B \cup C | = |A| + |B| + |C| - |A\cap B| - |A \cap C| - |B \cap C| + |A\cap B \cap C| $ \\
+
+$|A \cap B| = 21!$ because fish and rat are 7 diff letters so 19 letters left and they are two blocks of string.
+\\
+$|A\cup B|$ = empty set because repeated i letter
+\\
+$|B \cap C|$ = empty set because repeated r letter therefore , $|A\cap B \cap C|$  is empty
+\\
+
+$| A \cup B \cup C | $ = 24! + 23! + 23! -21!
+\\
+finally subtract 26! from above so:
+
+26! - 24! - 23! - 23! + 21!  //  ----- answer
+\end{solution}
+
+\newpage
+
+% inclusion exclusion
+\begin{problem} (10 points) Section 8.6, Exercise 2
+\end{problem}
+\begin{solution}:
+\\
+$P_1$ := property for altitude sickness \\
+$P_2$ := property for not in shape \\
+$P_3$ := property for getting allergies \\
+
+$N(P_1^{'}P_2^{'}P_3^{'})$ = $N - N(P_1) - N(P_2) - N(P_3) + N(P_1P_2) + N(P_2P_3) + N(P_1P_3) - N(P_1P_2P_3)$
+\\
+
+N = 1000 \\
+$N(P_1)$ = 450\\
+$N(P_2)$ = 622\\
+$N(P_3)$ = 30 \\
+$N(P_1P_2)$ = 111 (altitude sickness and not in shape)\\
+$N(P_2P_3)$ = 14 (not in shape and allergies )\\
+$N(P_1P_3)$ = 18 (altitude sickness and allergies)\\
+$N(P_1P_2P_3)$ = 9 (all three)\\
+
+Plugging in:
+\\
+1000 - 450 - 622 - 30 + 111 + 14 + 18 - 9 = 32
+\end{solution}
+
+%\newpage
+
+
+\goodbreak
+\noindent
+\textbf{Wildcard Quiz Problems} (the quiz on Friday could also be one of these)\\
+Section 8.1, Exercise 12\\
+Section 8.2, Exercise 6\\
+Section 8.3, Exercise 22\\
+Section 8.3, Exercise 13\\
+
+
+
+\goodbreak
+\honor
+
+\bigskip
+\checklist
+\end{document}

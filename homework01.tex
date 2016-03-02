@@ -1,0 +1,298 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,latexsym,paralist}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\names}[5]{
+\begin{tabular}{|ll|}
+\hline
+\textbf{Name}  & \textbf{Problems}\\
+\hline
+#1 & 1--10\\
+#2 & #3\\
+#4 & #5\\
+\hline
+\end{tabular}}
+\newcommand{\honor}{\noindent \textbf{Aggie Honor Statement: }On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. 
+}
+
+ 
+\newcommand{\checklist}{\noindent\textbf{Checklist:}
+\begin{compactenum}
+\item Did you type your full name and UIN and those of any collaborators? 
+\item Did you abide by the Aggie Honor Code?
+\item Did you solve all problems and start a new page for each? 
+\item Did you submit
+\begin{compactenum}
+\item your \LaTeX\ source file?
+\item your  PDF file?
+\end{compactenum}
+\end{compactenum}
+}
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[1]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of \LaTeX\ and PDF files of this homework is due on
+    \textbf{#1} on eCampus (\texttt{http://ecampus.tamu.edu}). 
+    \end{quote}}
+
+
+\begin{document}
+\begin{center}
+{\large
+CSCE 222 [505] Discrete Structures for Computing\\[.5ex]
+Fall 2015 -- Philip C. Ritchey\\}
+\end{center}
+
+\problemset{1}
+
+\duedate{9 September 2015 (Wednesday) before 11:30 a.m.}
+
+\names{Mitesh Patel}
+{UIN: 124002210}{}
+{Date: 9-9-15}{}
+
+\begin{resources} Peer Teachers HRBB 129, Discrete Mathematics and Its Applications by Rosen, Piazza, sharelatex.com.
+\end{resources}
+
+\bigskip
+
+\newpage
+% truth table
+\begin{problem} (10 points) 
+Supplementary Exercise 2 
+\end{problem}
+\begin{solution}:
+\newline
+Truth Table:  (p $\vee$ q) $\to$ (p $\wedge$ $\neg $r)
+\bigskip
+
+\begin{center}
+\begin{tabular}{ | c | c | c | c | c | c | c |} 
+ \hline
+ p & q & r & $\neg$ r & p $\vee$ q & p$\wedge$$\neg$ r & (p $\vee$ q) $\to$ (p$\wedge$$\neg$ r)\\
+ \hline 
+ T & T & T & F & T & F & F \\ 
+ T & T & F & T & T & T & T \\ 
+ T & F & T & F & T & F & F \\ 
+ T & F & F & T & T & T & T \\ 
+ F & T & T & F & T & F & F \\ 
+ F & T & F & T & T & F & F \\ 
+ F & F & T & F & F & F & T \\ 
+ F & F & F & T & F & F & T \\ 
+ \hline
+\end{tabular}
+\end{center}
+\end{solution}
+
+\newpage
+
+% converse, contrapositive, inverse (in english)
+\begin{problem} (10 points) 
+Supplementary Exercise 4
+\end{problem}
+\begin{solution}:
+\newline 
+A) Converse: If I drive to work, then it is raining today. 
+\newline
+Contrapositive: If I don't drive to work, then it is not raining today.
+\newline
+Inverse: If it is not raining today, then I will not drive to work.
+\newline
+B) Converse: If x is greater than or equal to 0, then the absolute value of x is equal to x.
+\newline
+Contrapositive: If x is less than or equal to 0, then the absolute value of x is not equal to x.
+\newline
+Inverse: If the absolute value of x is not equal to x, then x is less than or equal to 0.
+\newline
+C) Converse: If $n^2$ is greater than 9, then n is greater than 3.
+\newline
+Contrapositive: If $n^2$ is not greater than 9, then n is not greater than 3.
+\newline
+Inverse: If n is not greater than 3, then $n^2$ is not greater than 9.
+\newline
+
+\end{solution}
+
+\newpage
+
+% consistency
+\begin{problem} (10 points) 
+Supplementary Exercise 8
+\end{problem}
+\begin{solution}:
+\newline
+A = "If Sergei takes the job offer."
+\newline
+B= "He will get a signing bonus."
+\newline
+C="He will receive a higher salary."
+\newline
+1)A $\to$ B ----------- A is T, B is T
+\newline
+2)A $\to$ C ----------- A is T, C is T		
+\newline
+3)B $\to$ $\neg$C ----------- INCONSISTENT becase B is T and C is F 
+\newline
+4)A  ----------- A is T
+\end{solution}
+
+\newpage
+
+% obligato game
+\begin{problem} (10 points) 
+Supplementary Exercise 10
+\end{problem}
+\begin{solution}:
+\newline
+Possible when p $\to$ q is true, when $\neg$(p $\vee$ r) $\vee$ q is true, and when q is true. 
+\bigskip
+
+\begin{center}
+\begin{tabular}{ | c | c | c | c | c |} 
+ \hline
+ p & q & r & p$\to$q & $\neg$ (p $\vee$ r) $\vee$ q \\
+ \hline 
+ T & T & T & T & T \\ 
+ T & T & F & T & T \\ 
+ T & F & T & F & F \\ 
+ T & F & F & F & T \\ 
+ F & T & T & T & T \\   
+ F & T & F & T & T \\ 
+ F & F & T & T & T \\ 
+ F & F & F & T & F \\ 
+ \hline
+\end{tabular}
+\end{center}
+
+By constructing a truth table, it helps us understand which possibilities where the student will pass the test. For the student to past the test the propositions in the problem have to be true as stated above. So by looking at rows 1, 2, 5, and 6 we can conclude that 4 out of 8 sequences where the student will pass the test.
+\end{solution}
+
+\newpage
+
+% deductive reasoning
+\begin{problem} (10 points) 
+Supplementary Exercise 14
+\end{problem}
+\begin{solution}:
+\newline
+**MUST KNOW THAT ALL KNAVES ARE LIARS FROM THE TEXTBOOK (Page 19)
+\newline
+Anita is a knave, and therefore Borris is not a knight because knaves lie. And if Carmen was a knight then Borris's statement would be true, but Borris's statement is false since we know at least two of them are knaves including Borris which is a liar since he is a knave.
+\end{solution}
+
+\newpage
+
+% satisfiability
+\begin{problem} (10 points) 
+Supplementary Exercise 18
+\end{problem}
+\begin{solution}:
+\newline
+$P_i$ = True whenever i is odd and false whenever I is even.
+\newline 
+Using this information...
+\newline
+$\bigvee$$_{i=1}$$^{100}$ ($P_i$ $\wedge$ $P_{i+1}$) = ($P_1$ $\wedge$ $P_2$) $\vee$ ($P_2$ $\wedge$ $P_3$) $\vee$  ($P_3$ $\wedge$ $P_4$) .... = F $\vee$ F $\vee$ F  = FALSE  
+\newline
+$\bigwedge$$_{i=1}$$^{100}$ ($P_i$ $\vee$ $P_{i+1}$) = ($P_1$ $\vee$ $P_2$) $\wedge$ ($P_2$ $\vee$ $P_3$) $\wedge$  ($P_3$ $\vee$ $P_4$) .... = T $\wedge$ T $\wedge$ T  = TRUE  
+\end{solution}
+
+\newpage
+
+% quantifiers, translate from english
+\begin{problem} (10 points) 
+Supplementary Exercise 20
+\end{problem}
+\begin{solution}:
+\newline
+P(x) = "Student x knows calculus."
+\newline
+Q(x) = "Class y contains a student who knows calculus."
+\newline
+A) $\exists x$ P(x)
+\newline
+B) $\neg$ $\forall x$ P(x)
+\newline
+C) $\forall y$ Q(y)
+\newline
+D) $\forall x$ P(x)
+\newline
+E) $\exists y$ $\neg$ Q(y)
+
+\end{solution}
+
+\newpage
+
+% evaluating the \exists_n (exactly n) quantifier
+\begin{problem} (10 points) 
+Supplementary Exercise 26
+\end{problem}
+\begin{solution}:
+\newline
+A)$\exists_0 x$($x^2$ = -1) is TRUE because there exactly 0 values that can satisfy the statement
+\newline
+B)$\exists_1 x$($|$x$|$ = 0) is TRUE because there exactly 1 value that can satisfy the statement (0).
+\newline
+C)$\exists_2 x$($x^2$ = 2) is FALSE because there exactly 0 values that can satisfy the statement.
+\newline
+D)$\exists_3 x$( x= $|$x$|$) is FALSE because because more than three values can satisfy that statement.
+
+\end{solution}
+
+\newpage
+
+% negations
+\begin{problem} (10 points) 
+Supplementary Exercise 32
+\end{problem}
+\begin{solution}:
+\newline
+A) If it does not snow today, then I will not go skiing tomorrow. 
+\newline
+B) Not every person in the class understands mathematical induction.
+\newline
+C) Every student in the class likes discrete mathematics.
+\newline
+D)There is a math class in which no student falls asleep during lectures.
+\end{solution}
+
+\newpage
+
+% proofs (irrationality)
+\begin{problem} (10 points) 
+Supplementary Exercise 38
+\end{problem}
+\begin{solution}:
+\newline
+Prove the contrapositive: If $x^3$ is rational then x is rational.
+\newline
+so, x=p / q , p and q are integers and q is not equal to 0.
+\newline
+then, $x^3$ = $p^3$ / $q^3$ ,  $p^3$ and $q^3$ are integers,  so in conclusion $x^3$ is rational.
+\end{solution}
+
+\newpage 
+
+\goodbreak
+\noindent
+\textbf{Wildcard Quiz Problems} (the quiz on Friday could also be one of these)\\
+Supplementary Exercise 6\\
+Supplementary Exercise 24\\
+Supplementary Exercise 34\\
+Supplementary Exercise 46\\
+
+
+\goodbreak
+\honor
+
+\bigskip
+\checklist
+\end{document}

@@ -1,0 +1,194 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,amsfonts,latexsym,paralist}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\graphicspath{ {images/}} 
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\names}[3]{
+\begin{center}
+\begin{tabular}{|l|}
+\hline
+\textbf{Names of Group Members}\\
+\hline
+#1 \\
+#2 \\
+#3 \\
+\hline
+\end{tabular}
+\end{center}
+}
+\newcommand{\honor}{\noindent \textbf{Aggie Honor Statement: }On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. 
+}
+
+ 
+\newcommand{\checklist}{\noindent\textbf{Checklist:}
+\begin{compactenum}
+\item Did you type your full name and that of all collaborators? 
+\item Did you abide by the Aggie Honor Code?
+\item Did you solve all problems and start a new page for each? 
+\item Did you submit your  PDF file?
+\end{compactenum}
+}
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[1]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of \LaTeX\ and PDF files of this homework is due on
+    \textbf{#1} on gradescope (\texttt{http://gradescope.com}). 
+    \end{quote}}
+
+
+\begin{document}
+\begin{center}
+{\large
+CSCE 222 [505] Discrete Structures for Computing\\[.5ex]
+Fall 2015 -- Philip C. Ritchey\\}
+\end{center}
+
+\problemset{10}
+
+\duedate{4 December 2015 (Friday) before 11:30 a.m.}
+
+\names{Mitesh Patel}
+{11-25-15}
+{UIN: 124002210}
+
+\begin{resources} http://www3.cs.stonybrook.edu/~cse350/slides/turing2.pdf\\
+http://www3.cs.stonybrook.edu/~cse350/slides/turing2.pdf\\
+http://www.cs.odu.edu/~toida/nerzic/390teched/tm/definitions.html\\
+https://www.youtube.com/watch?v=taClnxU-nao\\
+https://www.youtube.com/watch?v=SFfJB6VfiBc
+\end{resources}
+
+\bigskip
+
+% 
+\begin{problem} (12 points) Section 13.3, Exercise 26.
+\end{problem}
+\begin{solution} :
+\\
+\includegraphics [scale = 0.7] {222p1} 
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (12 points) Construct a NFA that recognizes the language $$L = \{w\in \{a,b\}^* \mid w \text{ starts and ends with the same symbol}\}$$
+\end{problem}
+\begin{solution} :
+\\
+\includegraphics [scale = 1] {222p2} 
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (12 points) Section 13.3, Exercise 52
+\end{problem}
+\begin{solution}: \\
+\includegraphics [scale = 0.95] {222p3} 
+\end{solution}
+\newpage
+
+% 
+\begin{problem} (12 points) Section 13.3, Exercise 46 (give your answer as a regular expression)
+\end{problem}
+\begin{solution} :
+\\
+$\lambda$ will be accepted because final state is start state \\
+need 1 from $s_o$ to reach $s_1$ \\
+\{10\{0,1\}\} will reach $s_o$ \\
+\\
+therefore: (\{10\{0,1\}\}) * \{$\lambda$,1\}
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (12 points) Section 13.4, Exercise 12c
+\end{problem}
+\begin{solution}: \\
+\includegraphics [scale = 0.9] {222p5} 
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (12 points)  Section 13.4, Exercise 6
+\end{problem}
+\begin{solution} :
+\\
+a) ($\lambda \cup$ 0 $\cup$ 1)($\lambda \cup$ 0 $\cup$ 1)($\lambda \cup$ 0 $\cup$ 1)
+\\
+b) 00$1^*$0 \\
+c) $0^*$(0 $\cup$ 100)$^*$ \\
+d) $0^*$(0 $\cup$ 10)$^*$00 -----cannot contain 1$^*$ or 11 \\
+e) take 0 in between 11 and taking kleene closure of the whole part: \\
+($0^*$10$^*$10$^*$)$^*$
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (12 points)  Section 13.5, Exercise 8
+\end{problem}
+\begin{solution} :
+\\
+If we find a 0 we replace it with 1, and if we find a 1, we just make the head to the right, the first blank cell will indicate end of input string and will halt. 
+\\
+so: \\
+($S_o$, 0, $S_o$, 1, R), ($S_o$, 1, $S_o$, 1, R) and ($S_o$, B, $S_1$, B, R), when machine is in state $S_1$ it will halt.
+\\
+
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (12 points)  Section 13.5, Exercise 16
+\end{problem}
+\begin{solution} :
+\\
+
+$S_8$ is final state \\
+$(S_0, 0, S_1, M, R)$, $(S_1, 0, S_2, M, R)$ - check if two 0's are found next to each other and mark them M \\
+$(S_2, 0, S_2, 0, R)$, $(S_2, 1, S_3, 1, R)$ - goes right until value 1 is found \\
+$(S_3, 1, S_3, 1, R)$, $(S_3, B, S_4, B, L)$, $(S_3, M, S_4, M, L)$ - goes right until blank cell or marked cell is found \\
+$(S_4, 1, S_5, M, L)$ - if cell left of blank or marked cell is one, then mark it and go to next state \\
+$(S_5, M, S_7, M, R)$, $(S_7, M, S_8, M, L)$ - checks cell left of current cell is marked as well as it checks if the current cell is marked, if so then machine terminates \\
+$(S_5, 1, S_5, 1, L)$, $(S_5, 0, S_6, 0, L)$ - goes left if the cell is 1 until a 0 cell is found \\
+$(S_6, 0, S_6, 0, L)$, $(S_6, M, S_0, M, R)$ - goes left if the cells are 0 until a marked cell is found \\
+
+\end{solution}
+
+\newpage
+
+% 
+\begin{problem} (4 points) Section 13.5, Exercise 30
+\end{problem}
+\begin{solution} :
+\\
+A) Decision problem, since we can say yes or no if the sequence is in increasing order or not. \\
+B) Decision problem, since we can say yes or no if we can or cant color the graphs with three colors so that no two adjacent vertices are the same color. \\
+C) Not a decision problem since answer would be a number. \\
+D) Decision problem since we can answer with a yes or a no.
+
+\end{solution}
+
+\newpage
+
+
+\goodbreak
+\honor
+
+\bigskip
+\checklist
+\end{document}

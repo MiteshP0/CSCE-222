@@ -1,0 +1,471 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,latexsym,paralist}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\names}[5]{
+\begin{tabular}{|ll|}
+\hline
+\textbf{Name}  & \textbf{Problems}\\
+\hline
+#1 & 1--10\\
+#2 & #3\\
+#4 & #5\\
+\hline
+\end{tabular}}
+\newcommand{\honor}{\noindent \textbf{Aggie Honor Statement: }On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. 
+}
+
+ 
+\newcommand{\checklist}{\noindent\textbf{Checklist:}
+\begin{compactenum}
+\item Did you type your full name and UIN and those of any collaborators? 
+\item Did you abide by the Aggie Honor Code?
+\item Did you solve all problems and start a new page for each? 
+\item Did you submit
+\begin{compactenum}
+\item your \LaTeX\ source file?
+\item your  PDF file?
+\end{compactenum}
+\end{compactenum}
+}
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[1]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of \LaTeX\ and PDF files of this homework is due on
+    \textbf{#1} on eCampus (\texttt{http://ecampus.tamu.edu}). 
+    \end{quote}}
+
+
+\begin{document}
+\begin{center}
+{\large
+CSCE 222 [505] Discrete Structures for Computing\\[.5ex]
+Fall 2015 -- Philip C. Ritchey\\}
+\end{center}
+
+\problemset{3}
+
+\duedate{23 September 2015 (Wednesday) before 11:30 a.m.}
+
+\names{Mitesh Patel}
+{UIN: 124002210}{}
+{9-22-15}{}
+
+\begin{resources} Discrete Structures and its Applications - Rosen Chapter 3. \newline https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/ \newline http://www.trans4mind.com/personal-development/mathematics/series/sumNaturalSquares.htm \newline http://www.ee.ryerson.ca/~courses/coe428/sorting/insertionsort.html \newline http://codeyarns.com/2012/06/29/inserting-an-algorithm-in-latex/ \end{resources}
+
+\bigskip
+
+% describe an algorithm
+\begin{problem} (10 points) Section 3.1, Exercise 4
+\end{problem}
+\begin{solution}:
+\\
+
+%procedure diff(x$_1$....x$_n$ : integers)
+%\newline
+%hold large = x$_1$ - x$_2$
+%\newline
+%for i := 2 to n-1
+%\\
+%\hspace{4ex} if hold large $<$ x$_{i+1}$ - x$_i$ then
+%\\
+%\hspace{4ex} hold large := x$_{i+1}$ - x$_i$
+%\\
+%return hold large
+\begin{algorithm}
+\caption{Find largest difference in a list of integers}
+\label{}
+\begin{algorithmic}[1]
+\Procedure{diff}{$x_1 .... x_n : integers$}
+    \State $large := x_1 - x_2$
+    \For { i := 2 to n-1 }
+         \If {$large < x_{i+1} - x_i$ } 
+        large := $x_{i+1} - x_i$
+        \EndIf
+	\EndFor
+	\State Return $large$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\end{solution}
+
+\newpage
+
+% 1st and 2nd largest elements
+\begin{problem} (10 points) Supplementary Exercise 2
+\end{problem}
+\begin{solution}:
+\\ A) \\
+\begin{algorithm}
+\caption{Find first and second largest element in list of integers}
+\label{}
+\begin{algorithmic}[1]
+\Procedure{find two}{$x_1 .... x_n : integers$}
+    \State $first := x_1$
+    \For { i := 2 to n }
+         \If {$first < x_i$ } 
+        first := $x_i$
+        \EndIf
+	\EndFor
+	
+	\State $second := x_1$
+    	\For { i := 2 to n }
+         \If {$second < x_i$ and second < first} 
+        second := $x_i$
+        \EndIf
+	\EndFor
+	\State Return $first$
+	\State Return $second$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\\
+B) \\
+O(n) for both for loops so number of comparisons is O(n).
+
+\end{solution}
+
+\newpage
+
+
+% insertion sort
+\begin{problem} (10 points) Section 3.1, Exercise 38
+\end{problem}
+\begin{solution}:
+\\
+Insertion Sort
+\\
+Original list: 6,  2,  3 , 1 , 5 , 4
+\\
+Checks: $ 6 > 2$
+\\
+After first check: 2,  6,  3 , 1 , 5 , 4
+\\
+Checks: $ 3 > 2, 3 > 6$
+\\
+After second check:  2,  3,  6 , 1 , 5 , 4
+\\ 
+Checks: $1 > 2, 1 <  3, 1 < 6$
+\\
+After third check: 1,  2,  3 , 6 , 5 , 4
+\\
+Checks: $5 > 1, 5 > 2, 5 > 3, 5 < 6$
+\\
+After fourth check: 1,  2,  3 , 5 , 6 , 4
+\\
+Checks: $4 > 1, 4 > 2, 4 > 3, 4 < 5, 4 < 6 $
+\\
+After fifth check: 1,  2,  3 , 4 , 5 , 6
+\\ 
+\\
+List is now sorted after the fifth check.
+\end{solution}
+
+\newpage
+
+
+% greedy algorithm
+\begin{problem} (10 points) Section 3.1, Exercise 56
+\end{problem}
+\begin{solution}:
+\\
+We can use proof by counterexample:
+\\ Our example could be : 20 cents.
+\\ We first start with the normal way of counting change.
+\\ 20 cents is two dimes which is two coins.
+\\ Next, we use the 12 cent method to see how many coins it takes to satisfy 20 cents.
+\\ Using the 12 cent method, we get 1 12 cent, 1 nickel, and 3 pennies which is 5 coins.
+\\
+\\
+Therefore, it does not produce change using the fewest coins possible by our proof by counterexample. 
+\end{solution}
+
+\newpage
+
+
+% big O
+\begin{problem} (10 points) Supplementary Exercise 18
+\end{problem}
+\begin{solution}:
+\\
+$\Sigma_{j=1}^n$ j(j+1)
+\\
+= $\Sigma_{j=1}^n$ j$^2$ + $\Sigma_{j=1}^n$ j 
+using: $\Sigma_{j=1}^n$ j  =  $\frac {n(n+1)} {2} $
+\\
+and $\Sigma_{j=1}^n$ j$^2$ = $\frac{n(n+1)(2n+1)}{6}$
+\\
+\\
+= $\frac{n(n+1)(2n+1)}{6}$ + $\frac {n(n+1)} {2} $
+\\
+= $\frac {n(n+1)} {2} $ ($\frac{2n+1}{3}$ + 1)     by factoring
+\\
+= $\frac {n(n+1)(n+2)}{3}$
+\\
+So: f(n) = $\frac {n(n+1)(n+2)}{3}$ $\leq$ $2n^3$
+\\
+We know c = 2 and k =1 
+\\ Therefore the Big O notation would be O($n^3$)
+\end{solution}
+
+\newpage
+
+
+% ordering functions
+\begin{problem} (10 points) Supplementary Exercise 26
+\end{problem}
+\begin{solution}:
+\\
+For this problem we need to know that n grows faster then log(n) and that log(log(n)) $<$ log(n). We can see this by graphing these functions on a graphing calculator.
+\\
+Looking at the growth rate of the functions given to order. We only care about the exponents so:
+\\
+$n^{log(n)} , nlog(n)loglog(n), n(log(n))^{3/2}, n^{4/3}log(n)^2, n^{3/2}, 2^{100n}, 2^{n^2}, 2^{2n}, 2^{n!}$
+\end{solution}
+
+\newpage
+
+
+% big theta
+\begin{problem} (10 points) Section 3.2, Exercise 30
+\end{problem}
+\begin{solution}:
+\\
+A) 3x+7 = O(x) b/c polynomial degree is 1
+\\
+x $\leq$ 3x
+\\
+x$\leq$ 3x+7
+\\
+c = 3 , k=1
+\\
+O(3x+7)
+\\
+3x+7 and x are same order 
+
+\bigskip
+B) $2x^2 + x - 7$ = O(x$^2$) b/c polynomial degree is 2
+\\
+$x^2 < 2x^2$
+\\
+$x^2 < 2x^2 + x - 7$
+\\
+c=2 k=7
+\\
+O($2x^2+x-7$)
+\\
+$2x^2+x-7$ and $x^2$ are same order
+
+\bigskip
+C) $[x+ \frac{1}{2}] $= O(x)
+\\
+$x\leq [x+ \frac{1}{2}]$
+\\
+c=1 k =1 
+\\
+O($[x+ \frac{1}{2}]$)
+\\
+$[x+ \frac{1}{2}]$ and x are same order
+\\
+\bigskip
+
+D)$log(x^2+1)$ $\leq$ $log(2x^2)$
+\\
+$log(2x^2)$ = 2log(x)
+\\
+c = 2 ,  k=1
+\\
+= O(log(x))
+\\
+log(x) $\leq$ $log(x^2+1)$
+\\
+c=1 k=1
+\\
+O($log(x^2+1)$) 
+\\ 
+$log(x^2+1)$ and log(x) are same order
+\bigskip
+
+E)$log_{10}(x)$ $\leq$ log(x)
+\\
+O(log(x))
+\\
+log(x) $\leq$ $log_{10}(x)$
+\\
+O($log_{10}(x)$)
+\\
+$log_{10}(x)$ and log(x) are same order
+
+\end{solution}
+
+\newpage
+
+
+% complexity
+\begin{problem} (10 points) Supplementary Exercise 30
+\end{problem}
+\begin{solution}:
+\\
+A)
+\\
+
+\begin{algorithm}
+\caption{sorts integers and checks for each pair of terms whether their difference is in the sequence}
+\label{}
+\begin{algorithmic}[1]
+\Procedure{check}{$x_1 .... x_n : integers$}
+    \State Sort ($x_1....x_n$) from high to low 
+    \For { i := 1 to n-1 }
+    	sub := $x_{i+1} - x_i$
+	
+		\For {k:= i+1 to n}
+         	\If {$x_k$ := sub } 
+        Return true
+        \EndIf
+	\EndFor
+	\EndFor	
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\bigskip
+
+B) O($n^2$) because nested for loops, and this algorithm is better than the brute force since it more efficient.
+\end{solution}
+
+\newpage
+
+
+% complexity
+\begin{problem} (10 points) Section 3.3, Exercise 16
+\end{problem}
+\begin{solution}:
+\\
+86400 seconds in one day which is approximately $10^5$
+\\
+so: $10^5 / 10^{-11}$ = $10^{16}$
+\\
+A) log(n) $\leq$ $10^{16}$
+\\
+n $\leq$ $2^{10^{16}}$
+\\
+$2^{10^{16}}$
+
+\bigskip
+
+B) 1000n $\leq$ $10^{16}$
+\\
+n  $\leq$ $10^{13}$
+\\
+$10^{13}$
+
+\bigskip
+
+C) $n^2$ $\leq$ $10^{16}$
+\\
+n $\leq$ $10^{8}$
+\\
+$10^{8}$
+\bigskip
+
+D) $1000n^2$ $\leq$ $10^{16}$
+\\
+$n^2$ $\leq$ $10^{13}$
+\\
+$n$ $\leq$ $10^{13/2}$
+\\
+$10^{13/2}$
+
+\bigskip
+
+E) $n^3$ $\leq$ $10^{16}$
+\\
+$10^{16/3}$
+
+\bigskip
+
+F) $2^n$ $\leq$ $10^{16}$
+\\
+n $\leq$ $log 10^{16}$
+\\
+$log 10^{16}$
+
+\bigskip
+
+G) $2^{2n}$ $\leq$ $10^{16}$
+\\
+n $\leq$ $\frac {log 10^{16}} {2}$
+\\
+ $\frac {log 10^{16}} {2}$
+ \bigskip
+ 
+ H) $2^{2^n}$ $\leq$ $10^{16}$
+ \\
+ $2^n$ $\leq$ $log 10^{16}$
+ \\
+ log($log 10^{16}$)
+\end{solution}
+
+\newpage
+
+
+% complexity
+\begin{problem} (10 points) Section 3.3, Exercise 46
+\end{problem}
+\begin{solution}:
+\\
+A)
+\\
+To use a brute-force algorithm we need to find a match for the first character of target then check each character afterwards. Using a while and a for loop to check for matching character of target and to check all the characters afterwards can help.
+\\
+\bigskip
+
+B)
+\\
+\begin{algorithm}
+\caption{Finding match for first character and checking successive characters for a match}
+\label{}
+\begin{algorithmic}[1]
+\Procedure{match}{x: target , y: text}
+    \State i := 1
+    \While {$x_1 = y_i $ AND $  i \leq n$}
+    TorF := 1
+    \For { k := 1 to m }
+    \If {$x_k$ != $y_{i+k}$}
+    TorF := 0
+    \EndIf
+    \EndFor
+    i := i+1
+    \EndWhile
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\bigskip
+
+C) Since outer loop runs n times and inner loop runs m times the big O is O(nm).
+\end{solution}
+
+%\newpage
+
+\goodbreak
+
+
+\goodbreak
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\honor
+
+\bigskip
+\checklist
+\end{document}

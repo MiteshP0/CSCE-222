@@ -1,0 +1,514 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,latexsym,paralist}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{fancybox}
+\usepackage{forest}
+\usetikzlibrary{positioning,arrows.meta}
+
+\usepackage[margin=1in]{geometry}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\names}[5]{
+\begin{center}
+\begin{tabular}{|ll|}
+\hline
+\textbf{Name}  & \textbf{Problems}\\
+\hline
+#1 & 1--10\\
+#2 & #3\\
+#4 & #5\\
+\hline
+\end{tabular}
+\end{center}
+}
+\newcommand{\honor}{\noindent \textbf{Aggie Honor Statement: }On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. 
+}
+
+ 
+
+
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[1]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of \LaTeX\ and PDF files of this homework is due on
+    \textbf{#1} on eCampus (\texttt{http://ecampus.tamu.edu}). 
+    \end{quote}}
+
+
+\begin{document}
+\begin{center}
+{\large
+CSCE 222 [505] Discrete Structures for Computing\\[.5ex]
+Fall 2015 -- Philip C. Ritchey\\}
+\end{center}
+
+\problemset{5}
+
+\duedate{14 October 2015 (Wednesday) before 11:30 a.m.}
+
+\names{Mitesh Patel}
+{10-10-15}{}
+{UIN:124002210}{}
+
+\begin{resources} Discrete Mathematics and Its Applications Chapter 6 \\
+http://www.texample.net/tikz/examples/feature/trees/ \\
+http://tex.stackexchange.com/questions/5447/how-can-i-draw-simple-trees-in-latex \\
+http://www.mycstutorials.com/articles/sorting/quicksort \\
+https://en.wikipedia.org/wiki/Merge-sort\\
+http://tex.stackexchange.com/questions/213770/how-to-combine-a-top-down-and-bottom-up-binary-tree-in-one-picture
+
+\end{resources}
+
+\bigskip
+
+% recursive algorithm for sum 1..n
+\begin{problem} (10 points) Section 5.4, Exercise 8
+\end{problem}
+\begin{solution}:
+\\
+\begin{algorithm}
+\caption{Recursive algorithm for finding sum of first n positive integers}
+\label{}
+\begin{algorithmic}[1]
+\Procedure{sum}{n : integer}
+         \If {n == 1} 
+        return 1
+        \Else \State return n + sum(n-1)
+        \EndIf
+        
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\end{solution}
+
+\newpage
+
+% prove that above algorithm is correct
+\begin{problem} (10 points) Section 5.4, Exercise 16
+\end{problem}
+\begin{solution}:
+\\
+Proof by Mathematical Induction sum(n) = n + sum(n-1) \bigskip
+\\
+Basis: \\ If n=1 then the first step of the algorithm tells us that 1 + sum(1-1) = 1, and this is true because the sum of 1 positive integer is just 1, therefore our basis step checks out.\bigskip
+\\
+Inductive:
+\\
+Assume: sum(k) = k + sum(k-1) , algorithm correctly computes first k positive integers.
+\\
+Show: sum(k+1) = k + 1 + sum(k+1-1) , algoritm correctly computes first k + 1 integers.
+\\
+\hspace*{2.6cm} = k + 1 + sum(k)
+\\
+Using our IH we can conclude that our above statement is true for k+1. Therefore by PMI the algorithm is correct.
+\end{solution}
+
+\newpage
+
+% do mergesort
+\begin{problem} (10 points) Section 5.4, Exercise 44
+\end{problem}
+\begin{solution}:
+\\
+
+\newsavebox\Downtree
+\newsavebox\Uptree
+
+\tikzset{
+  nleft/.style={text width=15pt,midway,left,font=\strut\scriptsize},
+  nright/.style={text width=15pt,midway,right,font=\strut\scriptsize},
+  }
+
+\savebox\Downtree{\begin{forest}
+for tree={
+  s sep=22pt,
+  l sep=20pt,
+  where n children=0{inner ysep=0pt}{draw,circle},
+  edge={->,>=latex}
+}
+[4 3 2 5 1 6 7 6 
+  [4 3 2 5
+  [4 3
+  [4
+  ]
+  [3
+  ]
+  ]
+  [2 5
+  [2
+  ]
+  [5
+  ]
+  ]
+  ]
+  [1 8 7 6 
+  [1 8 
+  [1
+  ]
+  [8
+  ]
+  ]
+  [7 6
+  [7
+  ]
+  [6
+  ]
+  ]
+  ]
+  ]
+]
+\end{forest}%
+}
+\savebox\Uptree{\begin{forest}
+for tree={
+  grow'=north,
+  s sep=25pt,
+  l sep=20pt,
+  where n children=0{inner ysep=0pt}{draw,circle},
+  edge={->,>=latex}
+}
+[1 2 3 4 5 6 7 8 
+  [2 3 4 5
+    [3 4
+    [4
+    ]
+    [3
+    ] 
+    ]
+    [2 5
+    [2
+    ] 
+    [5
+    ]
+    ]
+  ]
+  [1 6 7 8
+    [1 8
+    [1
+    ]
+    [8
+    ]
+    ]
+    [6 7
+    [7
+    ]
+    [6
+    ]
+    ]
+    ]
+  ]
+]
+\end{forest}%
+}
+
+
+
+\begin{tikzpicture}[>={Latex[open]}]
+\node[inner sep=0pt] (Down) {\usebox\Downtree};
+\coordinate (aux);
+\node[inner sep=0pt,below=0pt of Down] (Up) {\usebox\Uptree};
+
+
+\end{tikzpicture}
+
+
+\end{solution}
+
+\newpage
+
+% do quicksort
+\begin{problem} (10 points) Section 5.4, Exercise 50
+\end{problem}
+\begin{solution}:
+\\
+3,5,7,8,1,9,2,4,6
+\\ 
+The median is 5 so that means out pivot is 5.
+\\
+
+Now just looking at the first half of the numbers: 3,1,2,4 - our pivot is 3 therefore the numbers less than 3 go to the left of three and greater than 3 go to the right of 3. We get 1,2,3,4 as a result.
+\\
+
+Now looking at the other half of the numbers: 7,8,9,6 - our pivot is 7 and using the same method above where the numbers less than 7 go to the left and the numbers greater go to the right. We get 6,7,8,9 as a result.
+\\
+
+Therefore, as a result we get [ 1,2,3,4 ], 5 , [6,7,8,9] = 1,2,3,4,5,6,7,8,9 sorted.
+\end{solution}
+
+\newpage
+
+% basics of counting
+\begin{problem} (10 points) Section 6, Supplementary Exercise 8
+\end{problem}
+\begin{solution}:
+\\
+   A) 
+\\
+100 through 999 is a 3 digit positive integer
+\\
+so: (1000-100) = 900
+\\
+900 positive integers with three decimal digits (100 through 900)
+\\
+
+B) 
+\\We can see that there are 9 ways for one positive integer with one decimal digit (1 through 9)
+\\
+And from part A the number of positive 3 digit integers is 900
+\\
+so: 900 + 9 = 909 numbers that have odd number of decimal digits
+\\
+
+C)\\
+The possibilities are:
+\\
+ A one digit number that is 9 = 1 
+ \\
+ A two digit number with the number 9 at the tens place and 0-9 at ones place is = 1 + 9 = 10
+ \\
+ A two digit number with 9 at ones place and 1-8 at tens place = 1 + 7 = 8
+ \\
+ A three digit number where 0-9 in the ones place and tens place, and 9 in 100s place = 10(10) = 100
+ \\
+ A three digit number where 9 is in tens place and 1-8 in 100s place and 0-8 in ones place = 9(10) = 90
+ \\
+ A three digit number where 9 in ones place, 0-8 in tens, and 1-8 in 100s = 9(9) = 81
+ \\
+ Therefore by adding them all up we get 1+10+8+100+90+81 = 290 numbers have at least one decimal digit equal to 9
+\\
+
+D) 
+\\
+1-9 on ones place - 1,2,3,4,5,6,7,8,9 - we have 4 even numbers
+\\
+0-9 in tens place - 0,1,2,3,4,5,6,7,8,9 - we have 5 even numbers (counting 0)
+\\
+0-9 in 100s place - - 0,1,2,3,4,5,6,7,8,9 - we have 5 even numbers (counting 0)
+\\
+Therefore, 4(5$^2$) = 120 numbers have no odd decimal digits.
+\\
+
+E)\\
+We can have 55 a two digit number where theres only one way in which the ones place has to be 0 - 1
+\\
+We can have \_ 55 a three digit number where 0-9 is in the blank so 10 ways - 10
+\\
+We can have 55 \_ a three digit number where 0-9 except 5 and 0 in the blank so 8 ways - 8
+\\
+Therefore there are 1+10+8 = 19 numbers that have consecutive digits equal to 5
+\\
+
+F)\\
+There are 9 three digit palindromes : 111, 222, .... , 999
+\\
+There are 9 two digit palindromes : 11, 22, ... , 99
+\\
+3 digit palindromes could also be where middle value is numbers 0-9: 1 \_ 1, 2 \_ 2, ...., 9 \_ 9 . Where the middle value can be a number from 0-9, so 10 ways to do this on 9 potential palindromes = 9(10) = 90
+\\
+Therefore summing them up we get: 90+9+9 = 108 numbers that are palindromes.
+\end{solution}
+
+\newpage
+
+% pigeon hole principle
+\begin{problem} (10 points) Section 6, Supplementary Exercise 12
+\end{problem}
+\begin{solution}:
+\\
+There are 7 days in a week, and 12 months.
+\\
+Using this we can multiple 12 by 7 which gives us 84. Now using the pigeon hole principle this gives us:
+\\
+k = 84
+\\
+k+1 = 84+1 = 85 people where at least two would be born on the same day of the week and on the same month.
+\end{solution}
+
+\newpage
+
+% permutations and combinations
+\begin{problem} (10 points) Section 6.3, Exercise 30
+\end{problem}
+\begin{solution}:
+\\
+A)
+\\
+We have 7 women and 9 men. 
+\\
+Using C(n,r) = $\frac{n!}{r!(n-r)!}$
+\\
+C(7,1)C(9,4) + C(7,2)C(9,3) + C(7,3)C(9,2) + C(7,4)C(9,1) + C(7,5)C(9,0) =
+\\
+$\frac{7!}{1!(6!)}$$\frac{9!}{4!(5!)}$ + $\frac{7!}{2!(5!)}$$\frac{9!}{3!(6!)}$ + $\frac{7!}{3!(4!)}$$\frac{9!}{2!(7!)}$ + $\frac{7!}{4!(3!)}$$\frac{9!}{1!(8!)}$ + $\frac{7!}{5!(3!)}$$\frac{9!}{0!(9!)}$ = 7(126) + 21(84) + 35(36) + 35(9) + 21(1)
+\\
+= 4242 ways
+\\
+
+B)
+\\
+C(7,1)C(9,4) + C(7,2)C(9,3) + C(7,3)C(9,2) + C(7,4)C(9,1) =
+\\
+$\frac{7!}{1!(6!)}$$\frac{9!}{4!(5!)}$ + $\frac{7!}{2!(5!)}$$\frac{9!}{3!(6!)}$ + $\frac{7!}{3!(4!)}$$\frac{9!}{2!(7!)}$ + $\frac{7!}{4!(3!)}$$\frac{9!}{1!(8!)}$ = 7(126) + 21(84) + 35(36) + 35(9) = 
+\\
+= 4221 ways
+\end{solution}
+
+\newpage
+
+% binomial coefficients and identities
+\begin{problem} (10 points) Section 6.4, Exercise 8
+\end{problem}
+\begin{solution}:
+\\
+We want to find the coefficient of $x^8y^9$
+\\
+We are given $(3x+2y)^{17}$
+\\
+By looking at these two equations we can conclude that:
+\\
+n = 17
+\\
+j = 9
+\\
+$(3x+2y)^{17} = \Sigma_{j=0}^{17}$ $ {17}\choose{j} $ $3x^{17-j}2y^j$
+\\
+Plugging in j we get:
+${17}\choose{9} $ $3x^{17-9}2y^9$
+\\
+= ${17}\choose{9} $ $3x^{8}2y^9$ 
+\\
+= ${17}\choose{9} $ $3^{8}2^9$ = $\frac{17!}{9!(8!)}$ ($3^82^9$)
+\\
+= using a calculator we can conclude that the final answer is 81662929920
+\end{solution}
+
+\newpage
+
+% generalized permutations and combinations
+\begin{problem} (10 points) Section 6, Supplementary Exercise 38
+\end{problem}
+\begin{solution}:
+\\
+Given the fact that we need to pick 12 dozens 3 of each kind of apples.
+\\
+There are 20 delicious apples in which we can pick 3 of the same kind.
+\\
+There are 20 macintosh apples in which we can pick 3 of the same kind.
+\\ 
+Finally, there are 20 granny smith apples in which we can pick 3 of the same kind.
+\\
+Therefore, 3$^3$ = 27 ways in which we choose dozen apples if at least three of each kind must be chosen.
+\end{solution}
+
+\newpage
+
+% generating permutations and combinations
+\begin{problem} (10 points) Section 6.6, Exercise 6
+\end{problem}
+\begin{solution}:
+\\
+Steps to complete this problem is as follows:
+\\
+1) look for LAST pair of integers where $a_j < a_{j+1}$
+\\
+2) look for the least integer to the right of $a_j$ that is greater than $a_j$
+\\
+3) now swap the value found in step 2 above and place it in the position $a_j$
+\\
+4) finally order the remaining elements
+\\
+
+A) 1342
+\\
+Using step 1 $a_2 = 3$ and $a_3 = 4$
+\\
+Using step 2 $a_3 = 4$
+\\
+Using step 3 $a_2 = 4$
+\\
+Using step 4 our answer is $1423$
+\\
+
+B) 45321
+\\
+Using step 1 $a_1 = 4$ and $a_2 = 5$
+\\
+Using step 2 $a_2 = 5$
+\\
+Using step 3 $a_1 = 5$
+\\
+Using step 4 our answer is $51234$
+\\
+
+C) 13245
+\\
+Using step 1 $a_4 = 4$ and $a_5 = 5$
+\\
+Using step 2 $a_5 = 5$
+\\
+Using step 3 $a_4 = 5$
+\\
+Using step 4 our answer is $13254$
+\\
+
+D) 612345
+\\
+Using step 1 $a_5 = 4$ and $a_6 = 5$
+\\
+Using step 2 $a_6 = 5$
+\\
+Using step 3 $a_5 = 5$
+\\
+Using step 4 our answer is $612354$
+\\
+
+E) 1623547
+\\
+Using step 1 $a_6 = 4$ and $a_7 = 7$
+\\
+Using step 2 $a_7 = 7$
+\\
+Using step 3 $a_6 = 7$
+\\
+Using step 4 our answer is $1623574$
+\\
+
+F) 23587416
+\\
+Using step 1 $a_7 = 1$ and $a_8 = 6$
+\\
+Using step 2 $a_8 = 6$
+\\
+Using step 3 $a_7 = 6$
+\\
+Using step 4 our answer is $23587461$
+\\
+\end{solution}
+
+%\newpage
+
+\goodbreak
+\noindent
+\textbf{Wildcard Quiz Problems} (the quiz on Friday could also be one of these)\\
+Section 6, Supplementary Exercise 4\\
+Section 6.2, Exercise 10\\
+Section 6.3, Exercise 8\\
+Section 6.5, Exercise 30\\
+
+
+
+\goodbreak
+\honor
+
+\bigskip
+
+\end{document}

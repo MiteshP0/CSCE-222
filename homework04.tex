@@ -1,0 +1,377 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,latexsym,paralist}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\names}[5]{
+\begin{tabular}{|ll|}
+\hline
+\textbf{Name}  & \textbf{Problems}\\
+\hline
+#1 & 1--10\\
+#2 & #3\\
+#4 & #5\\
+\hline
+\end{tabular}}
+\newcommand{\honor}{\noindent \textbf{Aggie Honor Statement: }On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. 
+}
+
+ 
+\newcommand{\checklist}{\noindent\textbf{Checklist:}
+\begin{compactenum}
+\item Did you type your full name and UIN and those of any collaborators? 
+\item Did you abide by the Aggie Honor Code?
+\item Did you solve all problems and start a new page for each? 
+\item Did you submit
+\begin{compactenum}
+\item your \LaTeX\ source file?
+\item your  PDF file?
+\end{compactenum}
+\end{compactenum}
+}
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[1]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of \LaTeX\ and PDF files of this homework is due on
+    \textbf{#1} on eCampus (\texttt{http://ecampus.tamu.edu}). 
+    \end{quote}}
+
+
+\begin{document}
+\begin{center}
+{\large
+CSCE 222 [505] Discrete Structures for Computing\\[.5ex]
+Fall 2015 -- Philip C. Ritchey\\}
+\end{center}
+
+\problemset{4}
+
+\duedate{30 September 2015 (Wednesday) before 11:30 a.m.}
+
+\names{Mitesh Patel}
+{9-30-15}{}
+{UIN: 124002210}{}
+
+\begin{resources}Discrete Mathematics and its Applications by Rosen Chapter 5
+ \\
+http://math.stackexchange.com/questions/241060/structural-inductions
+\\
+http://highered.mheducation.com/sites/0073383090/student-view0/index.html
+\\
+https://www.youtube.com/watch?v=dMn5w4-ztSw
+\\
+https://www.youtube.com/watch?v=IFqna5F0kW8
+\\
+https://www.cs.cmu.edu/~adamchik/21-127/lectures/induction-1-print.pdf
+\\
+http://www.inf.ed.ac.uk/teaching/courses/dmmr/slides/13-14/Ch5.pdf
+\\
+http://math.stackexchange.com/questions/855680/discrete-math-induction-problem
+\\
+http://math.stackexchange.com/questions/517440/whats-the-difference-between-simple-induction-and-strong-induction
+\end{resources}
+
+\bigskip
+
+% mathematical induction
+\begin{problem} (10 points) Section 5.1, Exercise 4
+\end{problem}
+\begin{solution}:
+\newline
+p(n) = $1^3 + 2^3 + n^3 = (\frac {n(n+1)}{2} )^2$
+\newline
+A) $p(1) = 1^3 = (\frac{1(1+1)}{2})^2 $
+\newline
+B) Basis Step:$ 1^3 = (\frac{1(1+1)}{2})^2 $
+\newline
+1=1 so p(1) is True
+\\
+C) IH : Assume p(k) = $1^2 + ... + k^3 = (\frac{k(k+1)}{2})^2$
+\\
+D) Prove: $p(k) \to p(k+1)$
+\\
+Show: $ p(k) = 1^3 + ... + k^3 + (k+1)^3 = (\frac{k+1(k+2)}{2})^2$
+\\
+E) $ p(k) = k^3 = (\frac{k(k+1)}{2})^2$
+\\
+so:    $   k^3 + (k+1)^3 =  (\frac{k(k+1)}{2})^2 + (k+1)^3$   by IH
+\\
+= $(\frac{k(k+1)}{2}) (\frac{k(k+1)}{2}) + (k+1)^3 $
+\\
+= $(\frac{(k^2+1)(k^2+1)}{4}) + (k+1)^3$
+\\ 
+= $1/4 k^2 (k+1)^2 + (k+1)^2 + (k+1)$
+\\
+= $1/4 (k+1)^2(k^2+4k+4)$
+\\
+= $1/4(k+1)^2(k+2)^2$
+\\
+= $(\frac{k+1(k+2)}{2})^2$
+\\ Therefore p(k+1) is true by PMI.
+\\
+F) The basis step is true and our inductive step is also true, so by PMI the formula is true whenever n is a positive number.
+\end{solution}
+
+\newpage
+
+% mathematical induction + division
+\begin{problem} (10 points) Supplementary Exercise 10
+\end{problem}
+\begin{solution}:
+\\
+$p(n) = n^3 + (n+1)^3 + (n+2)^3 divisible by 9$
+\\
+Basis: p(0) = 9 divisible by 9? YES so p(0) is true
+\\
+Inductive: p(k) $\to$ p(k+1)
+\\ 
+Assume p(k) = $ k^3 + (k+1)^3 + (k+2)^3$ divisible by 9
+\\
+Show p(k+1) is true :
+\\
+p(k+1) - p(k) using IH
+\\
+= $(k+1)^3 + (k+2)^3 + (k+3)^3 - k^3 - (k+1)^3 - (k+2)^3 $
+\\
+= $(k+3)^3 - k^3$
+\\
+= $(k^2+6k+9)(k+3) - k^2$ by expanding $(k+3)^3$
+\\
+= $9k^2 + 27k + 27$
+\\
+= $9(k^2+3k+3)$
+\\
+so we can see it is divisible by 9.
+\\
+therefore p(k) and p(k+1) are divisible by 9. 
+\end{solution}
+\newpage
+
+% mathematical induction + recurrence *
+\begin{problem} (10 points) Supplementary Exercise 20
+\end{problem}
+\begin{solution}:
+\\
+first few numbers of fibonacci:
+\\
+(0,1,1,2,3,5,8,13,21)
+\\
+Basis: f(0) = 0
+\\
+0 is divisible by of 3. means position 0 of the sequence which is the first element in the sequence. So:
+\\
+f(4) = 3 is a divisible of 3 so basis step is completed.
+\\
+Inductive: assume f(k) is divisible by 3
+\\
+show f(k+4) is divisible by 3
+\\
+f(k+4) = f(k+3) + f(k+2)
+\\
+= f(k+2) + f(k+1) + f(k+1) + f(k)
+\\
+= f(k+1) + f(k) + f(k+1) + f(k+1) + f(k)
+\\
+= 2f(k) + 3f(k+1)
+\\
+by IH f(k) is divisible by 3 and we know f(k+1) is some integer times 3 which is divisible by 3
+\\
+so f(k+4) is divisible by 3 by PMI
+\end{solution}
+
+
+
+\newpage
+
+% strong induction - stamps walk through
+\begin{problem} (10 points) Section 5.2, Exercise 4
+\end{problem}
+\begin{solution}:
+
+A)Basis step:
+\\
+p(18) true b/c 1 4 cent stamp and 2 7 cent stamps
+\\
+p(19) true b/c 3 4 cent stamp and 1 7 cent stamp
+\\
+p(20) true b/c 5 4 cent stamps
+\\
+p(21) true b/c 3 7 cent stamps
+\\
+B) Inductive:  Assume p(i) for 18 $\leq$ i $\leq$ k
+\\
+C) Show (k+1) with 4 cent and 7 cent stamps
+\\
+D) (k+1)cent = (k-3)cent and 4 cents.. k-3+4 = k+1 so holds true
+\\
+E) True because both the basis and inductive steps were completed
+
+\end{solution}
+
+\newpage
+
+% strong induction - find the flaw
+\begin{problem} (10 points) Section 5.2, Exercise 32
+\end{problem}
+\begin{solution}:
+\\
+The flaw is in the induction step from the 4 cent case, we can form it using only 1 4 cent stamp so there is no need for 2 4 cent stamps.
+\end{solution}
+
+\newpage
+
+% well-ordering
+\begin{problem} (10 points) Supplementary Exercise 52
+\end{problem}
+\begin{solution}:
+\\
+A) No, not well ordered because it has infinite integers.
+\\
+B) Yes, it is well-ordered because least would be -99. 
+\\
+C) No, not well ordered because it has positive infinite rationals with no least element.
+\\
+D) Yes, it is well ordered because least element would be 1/100.
+\end{solution}
+
+\newpage
+
+% recursive definitions + induction
+\begin{problem} (10 points) Section 5.3, Exercise 13
+\end{problem}
+\begin{solution}:
+\\
+$p(n) = f_1 + f_3 +...+ f_{2n-1} = f_{2n}$
+\\
+Basis step : p(1) =$ f_1$ = 1 = $f_2$
+\\
+Inductive step: p(k) $\to$ p(k+1)
+\\
+Assume $p(k): f_1 + f_3 +...+f_{2k-1} = f_{2k}$
+\\
+Show p(k+1):  $f_1 + f_3 +...+ f_{2k-1} + f_{2k+1} = f_{2k} + f_{2k+1} $
+\\
+by IH  the right hand side =$ f_{2k} + f_{2k+1}$
+\\ 
+= $f_{2k+2}$
+\\
+= $f_{2(k+1)}$
+\\
+so:
+\\
+p(k+1) is true by PMI
+\end{solution}
+
+\newpage
+
+% recursive definition + structural induction
+\begin{problem} (10 points) Section 5.3, Exercise 32
+\end{problem}
+\begin{solution}:
+\\
+$\Sigma = (0,1)$
+\\
+x $\in \Sigma$ , t$\in \Sigma ^*$
+\\
+ones(tx) = ones(t) + x
+\\
+B) Base step: t = x
+\\
+ones(sx) = ones(s) + 0
+\\
+= ones(s) + ones(x) b/c ones(x) = 0 
+\\
+Assume ones(st) = ones(s) + ones(t)
+\\
+Recursive step: y $\in \Sigma$ s,t $\in \Sigma ^*$
+\\
+ones(s+y) = ones(st) + y
+\\
+= ones(s) + ones (t) + y b/c from above we get
+\\
+ones(s) + ones(ty)
+\\
+There fore by structural induction it is proved, because of our assumption we used in recursive step.
+
+\end{solution}
+
+\newpage
+
+% structural induction + trees
+\begin{problem} (10 points) Section 5.3, Exercise 44
+\end{problem}
+\begin{solution}:
+\\
+Basis step: since no internal vertices i(T) = 0
+\\
+so l(T) = 1
+\\
+= 1 + i(T)
+\\
+l(T) = 1+i(T) is True
+\\
+Assume : l(s) = 1 + i(S)
+\\
+Recursive step:
+\\
+If it is true for $T_1$ and $T_2$ then it is true for $T_1$
+\\
+know: $i(T) = i(T_1) + i(T_2) + 1$
+\\
+$l(T) = l(T_1) + l(T_2)$
+\\
+=$ i(T_1) + 1 + i(T_2) + 1$ from assumption
+\\
+= $i(T) + 1$ using $i(T) = i(T_1) + i(T_2) + 1$
+\\
+$l(T) = i(T) + 1$ is true by structural induction
+
+\end{solution}
+
+\newpage
+
+% iterated functions
+\begin{problem} (10 points) Section 5.3, Exercise 64
+\end{problem}
+\begin{solution}:
+\\
+f(n) = n/2 ... it is basically f divided by 2
+\\
+divide by $2^k$ to iterate through function so:
+\\
+$f^k (n)$ = $n/2^k$
+\\
+$f^k (n) \leq 1 $
+\\
+$n/2^k \leq 1$
+\\
+$n \leq 2^k$
+\\
+$log_2 (n) \leq k$
+\\
+so:
+\\
+$f_1^k (n) $ = $log_2 (n)$
+\end{solution}
+
+%\newpage
+
+\goodbreak
+\noindent
+
+
+
+
+\goodbreak
+\honor
+
+\bigskip
+\checklist
+\end{document}

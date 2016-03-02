@@ -1,0 +1,276 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,latexsym,paralist}
+\usepackage[margin=1in]{geometry}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\names}[5]{
+\begin{center}
+\begin{tabular}{|ll|}
+\hline
+\textbf{Name}  & \textbf{Problems}\\
+\hline
+#1 & 1--10\\
+#2 & #3\\
+#4 & #5\\
+\hline
+\end{tabular}
+\end{center}
+}
+\newcommand{\honor}{\noindent \textbf{Aggie Honor Statement: }On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. 
+}
+
+ 
+\newcommand{\checklist}{\noindent\textbf{Checklist:}
+\begin{compactenum}
+\item Did you type your full name and that of all collaborators? 
+\item Did you abide by the Aggie Honor Code?
+\item Did you solve all problems and start a new page for each? 
+\item Did you submit
+\begin{compactenum}
+\item your \LaTeX\ source file?
+\item your  PDF file?
+\end{compactenum}
+\end{compactenum}
+}
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[1]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of \LaTeX\ and PDF files of this homework is due on
+    \textbf{#1} on eCampus (\texttt{http://ecampus.tamu.edu}). 
+    \end{quote}}
+
+
+\begin{document}
+\begin{center}
+{\large
+CSCE 222 [505] Discrete Structures for Computing\\[.5ex]
+Fall 2015 -- Philip C. Ritchey\\}
+\end{center}
+
+\problemset{7}
+
+\duedate{30 October 2015 (Friday) before 11:30 a.m.}
+
+\names{Mitesh Patel}
+{UIN: 124002210}{}
+{10-24-15}{}
+
+\begin{resources} 
+http://www.inf.ed.ac.uk/teaching/courses/dmmr/slides/13-14/Ch2.pdf\\
+http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html\\
+http://math.stackexchange.com/questions/1496817/relation-in-diagram-is-it-reflexive-symmetric-transitive-and-antisymmetric\\
+http://www.math.cornell.edu/~levine/18.312/alg-comb-lecture-7.pdf
+
+\end{resources}
+
+\bigskip
+
+
+% enumerating relations (includes problem 42)
+\begin{problem} (15 points) Section 9.1, Exercise 44 (a,c,d,f)
+\end{problem}
+\begin{solution} :
+\\
+16 different relations on set \{0,1\}
+\\
+AxA = \{(0,0),(0,1),(1,0),(1,1)\}
+\\
+
+R$_1$ = $\emptyset$
+\\
+R$_2$ = \{(0,0)\}\\
+R$_3$ = \{(0,1)\}\\
+R$_4$ = \{(1,0)\}\\
+R$_5$ = \{(1,1)\}\\
+R$_6$ = \{(0,0),(0,1)\}\\
+R$_7$ = \{(0,0),(1,0)\}\\
+R$_8$ = \{(0,0),(1,1)\}\\
+R$_9$ = \{(0,1),(1,0)\}\\
+R$_{10}$ = \{(0,1),(1,1)\}\\
+R$_{11}$ = \{(1,0),(1,1)\}\\
+R$_{12}$ = \{(0,0),(0,1),(1,0)\}\\
+R$_{13}$ = \{(0,0),(0,1),(1,1)\}\\
+R$_{14}$ = \{(0,0),(1,0),(1,1)\}\\
+R$_{15}$ = \{(0,1),(1,0),(1,1)\}\\
+R$_{16}$ = \{(0,0),(0,1),(1,0),(1,1)\}\\
+\\
+
+A) $R_8, R_{13}, R_{14}, R_{16},$ because contain all pairs in form of (a,a)\\
+
+C)$R_1, R_2, R_5, R_8, R_9, R_{12}, R_{15}, R_{16}$ symmetric \\
+
+D) $R_1$ through $R_{14}$ anti symmetric because no pair of elements a and b with a != b such that both (a,b) and (b,a) belong to the relation\\
+
+F) $R_1$ through $R_{14}$ and $R_{16}$ are transitive by showing if (a,b) and (b,c) belong to the relation then (a,c) does.
+
+\end{solution}
+
+\newpage
+
+% Constructing relations with given properties
+\begin{problem} (15 points) Section 9, Supplementary Exercise 2
+\end{problem}
+\begin{solution} :
+\\
+
+A) R = \{(a,a),(b,b),(c,c),(d,d) , (a,b)(b,a)(c,b)(b,c)\} \\
+reflexive since our pairs include all ordered pairs such that (x,x) $\in$ R \\
+Symmetric since (b,a) $\in$ R whenever (a,b) $\in$ R and (c,d) $\in$ R whenever (b,c) $\in$ R \\
+Not Transitive since (a,b) $\in$ R and (b,c) $\in$ R, but (a,c) $\notin$ R \\
+
+B) R = $\emptyset$ since nothing in this set, nothing is related. \\
+
+C) R = \{(a,b),(b,c)\}\\
+irreflexive because (a,a) $\in$ R \\
+anti symmetric since (b,a) $\in$ R and False implying True is always True therefore antisymmetric \\
+Not transitive since (a,c) $\notin$ R \\
+
+D) R = \{(a,a),(b,b),(c,c),(d,d),(a,b),(b,a),(c,a),(b,c)\}
+\\
+reflexive since all x (x,x) $\in$ R
+\\
+not symmetric since (b,c) $\in$ R but not (c,b)
+\\
+not antisymmetric since a != b\\
+transitive since (a,b) $\in$ R and (b,c) $\in$ R then (a,c) $\in$ R is true \\
+
+E) R = {(a,c),(b,a),(c,c),(a,c)} \\
+(a,a) $\in$ R so not reflexive and (c,c) $\in$ R so irreflexive \\
+Not symmetric since (a,c) $\in$ R but (c,a) $\notin$ R. Not anti symmetric because a != b\\
+Not transitive since (b,a) $\in$ R and (a,c) $\in$ R then (b,c) $\notin$ R
+
+\end{solution}
+
+\newpage
+
+% Reasoning about relations
+\begin{problem} (15 points) Section 9, Supplementary Exercise 8
+\end{problem}
+\begin{solution} :
+\\
+Yes, by proof by contradiction,
+\\
+let A = \{(a,b)\}
+\\
+Constructing a symmetric relation: R = \{(b,a),(a,b)\}
+\\
+
+Let (c,d) $\in$  \~{R} then (c,d) $\notin$ R
+\\
+if (d,c) $\in$ R it would be contradiction and not symmetric
+\\
+so (d,c) $\in$ \~{R}
+\\
+therefore,  (d,c) $\in$ \~{R}
+\\
+finally: \~{R} = \{(c,d),(d,c)\} which is symmetric
+
+\end{solution}
+
+\newpage
+
+% Representing relations
+\begin{problem} (15 points) Section 9.3, Exercise 34
+\end{problem}
+\begin{solution} :
+\\
+Relation R on a set A can be a graph that has values of A as the vertices and ordered pairs (a,b) as edges \\
+
+Since (a,b) $\in$ R iff (a,b) $\notin$ \~{R} when there is an edge from a to b in graph of R, then the edge isnt drawn in \~{R} \\
+
+So: digraph of \~{R} is made by edges that aren't in digraph of R
+\end{solution}
+
+\newpage
+
+% Equivalence relations
+\begin{problem} (15 points) Section 9, Supplementary Exercise 20
+\end{problem}
+\begin{solution} :
+\\
+A) x can have same zodiac sign with x so (x,x) $\in$ R - reflexive
+\\
+x and y can have same zodiac sign and therefore y and x would have same sign so (x,y) $\in$ R $\implies$ (y,x) $\in$ R is true. So it is symmetric.
+\\
+(x,y) $\in$ R, and (y,x) $\in$ R, x and y have same sign so y and z have same sign. therefore (x,z) $\in$ R so it is transitive. So it is a equivalence relation.
+\\
+
+B) x can have same birth year as x so (x,x) $\in$ R - reflexive
+\\
+x and y can have same birth year and therefore y and x would have same birth year so (x,y) $\in$ R $\implies$ (y,x) $\in$ R is true. So it is symmetric.
+\\
+ (x,y) $\in$ R, and (y,x) $\in$ R, x and y have same birth year, then y and z have same birth year, therefore (x,z) $\in$ R so it is transitive. So it is a equivalence relation.
+ \\
+ 
+ C) x and x have been in same city so (x,x) $\in$ R is reflexive
+ \\
+ x and y have been in same city so y and x have been in same city therefore (x,y) $\in$ R $\implies$ (y,x) $\in$ R is true so symmetric.
+ \\
+ (x,y) $\in$ R, and (y,x) $\in$ R, x and y have been in same city, but it is not valid that x and z have been in same city, therefore (x,z) $\notin$ R so it is NOT transitive. So it is NOT a equivalence relation.
+\end{solution}
+
+\newpage
+
+% Posets
+\begin{problem} (15 points) Section 9.6, Exercise 6
+\end{problem}
+\begin{solution}:
+\\
+A) a = a for every real number, so it is reflexive \\
+(a=a $\wedge$ b=a) $\implies$ (a=b) is true so anti symmetric \\
+(a=b $\wedge$ b=c) $\implies$ (a=c) is true so transitive \\
+therefore it (R, =) is poset.
+\\
+
+B) a $<$ a  - NO this is not true, so it is not reflexive so just by checking this case we can conclude (R, $<$) not a poset. \\
+
+C) a$\leq$a - yes for every a it will be = so true so reflexive \\ 
+(a $\leq$ b $\wedge$ b $\leq$ a) $\implies$ (a=b) is true so anti-symmetric \\ 
+(a $\leq$ b $\wedge$ b $\leq$c) $\implies$ (a$\leq$c) is true so transitive, \\
+therefore (R,$\leq$) is poset.\\
+
+D) a =a for all real number so it is not reflexive \\
+therefore (R,$\neq$) is not a poset because a=a for all a. 
+\end{solution}
+
+\newpage
+
+% Composite key
+\begin{problem} (10 points) Section 9.2, Exercise 6
+\end{problem}
+\begin{solution} :
+\\
+Professor and course number.
+\\
+Professor and time.
+\\
+
+This is because since no two professors with same name have same course number or time assessment.
+\end{solution}
+
+%\newpage
+
+\goodbreak
+\noindent
+\textbf{Wildcard Quiz Problems} (the quiz on Friday could also be one of these)\\
+Section 9.1, Exercise 2\\
+Section 9.2, Exercise 2\\
+Section 9.3, Exercise 18/20/22\\
+Section 9.5, Exercise 2\\
+Section 9.6, Exercise 6\\
+
+
+\goodbreak
+\honor
+
+\bigskip
+\checklist
+\end{document}
